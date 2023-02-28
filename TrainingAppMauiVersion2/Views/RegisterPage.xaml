@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TrainingAppMauiVersion2.Models"
+             x:Class="TrainingAppMauiVersion2.Views.RegisterPage"
+             xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
+             x:DataType="viewmodel:RegisterPageViewModel"
+             Title="RegisterPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label 
+                Text="Register"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontSize="Header"/>
+
+            <Entry
+                x:Name="RegisterUserName"
+                Placeholder="Username"/>
+
+            <Entry
+                x:Name="RegisterPassWord"
+                Placeholder="Password"
+                IsPassword="True"/>
+
+            <Entry
+                x:Name="RegisterName"
+                Placeholder="Name"/>
+
+            <Entry
+                x:Name="RegisterBirthDate"
+                Placeholder="Date of birth (yyyy-mm-dd)"/>
+
+            <Entry
+                x:Name="RegisterWeight"
+                Placeholder="Weigtht in kg"/>
+
+            <Entry
+                x:Name="RegisterHeight"
+                Placeholder="Height in cm"/>
+
+            <Entry
+                x:Name="RegisterEmail"
+                Placeholder="Email"/>
+            <Button
+                Text="Register"/>
+            <Button
+                Text="Back"
+                Clicked="OnBackClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

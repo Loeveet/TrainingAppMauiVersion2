@@ -1,24 +1,27 @@
-﻿namespace TrainingAppMauiVersion2;
+﻿using TrainingAppMauiVersion2.ViewModels;
+
+namespace TrainingAppMauiVersion2;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+
 
 	public MainPage()
 	{
 		InitializeComponent();
+		BindingContext = new ViewModels.MainPageViewModel();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as MainPageViewModel).GetAWeather();
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private async void OnClickedRegister(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Views.RegisterPage());
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    }
 }
 
