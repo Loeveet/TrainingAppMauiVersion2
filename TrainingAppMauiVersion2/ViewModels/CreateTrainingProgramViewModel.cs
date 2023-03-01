@@ -26,6 +26,16 @@ namespace TrainingAppMauiVersion2.ViewModels
         string name;
 
         [ObservableProperty]
+        string apiMuscleName;
+
+        [ObservableProperty]
+        string muscleName;
+
+        [ObservableProperty]
+        string muscleForShow;
+
+
+        [ObservableProperty]
         public ObservableCollection<string> muscles;
 
         public CreateTrainingProgramViewModel()
@@ -40,6 +50,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             foreach (var m in muscleArray)
             {
                 Muscles.Add(m);
+
             }
         }
 
@@ -77,7 +88,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         public static async Task<ObservableCollection<Exercise>> GetExercices(string muscle)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.api-ninjas.com/");
+            client.BaseAddress = new Uri("https://api.api-ninjas.com/v1/exercises?muscle=");
             client.DefaultRequestHeaders.Add("X-Api-Key", "E2O3R8zknVI8Lo/k0kdq7A==JBFTCWQdZStbgUQq");
 
             ObservableCollection<Exercise> exercises = null;
@@ -90,6 +101,14 @@ namespace TrainingAppMauiVersion2.ViewModels
             }
 
             return exercises;
+        }
+
+        // TODO: Fixa så att man kan gå vidare och skriva ut en lista med hjälp av ChosenMuscle
+        [RelayCommand]
+        public static async void ChooseMuscle(string muscle)
+        {
+            var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
+            SiteVariables.ChosenMuscle = fixedMuscle;
         }
     }
 }

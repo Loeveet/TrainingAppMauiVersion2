@@ -1,3 +1,5 @@
+using TrainingAppMauiVersion2.SessionData;
+
 namespace TrainingAppMauiVersion2.Views;
 
 public partial class CreateTrainingProgramPage : ContentPage
@@ -7,4 +9,7 @@ public partial class CreateTrainingProgramPage : ContentPage
 		InitializeComponent();
 		BindingContext = new ViewModels.CreateTrainingProgramViewModel();
 	}
+
+
+
 }

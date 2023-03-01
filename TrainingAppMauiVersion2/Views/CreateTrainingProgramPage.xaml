@@ -11,17 +11,24 @@
             <CollectionView
                 ItemsSource="{Binding Muscles}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate 
-                        x:DataType="{x:Type x:String}">
+                    <DataTemplate>
                         <Grid
                             RowDefinitions="*"
-                            ColumnDefinitions="200, *">
+                            ColumnDefinitions="200, 100">
 
                             <Frame
                                 Grid.Column="0">
                                 <Label
                                     Text="{Binding .}"/>
                             </Frame>
+                            <Button
+                                x:Name="{Binding .}"
+                                Grid.Column="1"
+                                Text="Check out"
+                                Command="{Binding Source={RelativeSource 
+                                    AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
+                                    Path=ChooseMuscleCommand}"
+                                CommandParameter="{Binding .}"/>
 
                         </Grid>
 

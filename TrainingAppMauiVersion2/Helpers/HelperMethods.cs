@@ -20,6 +20,17 @@ namespace TrainingAppMauiVersion2.NewFolder
             }
             return arrayForShow;
         }
+
+        public static string CapitalizeFirstLetter(string word)
+        {
+            string fixedWord = char.ToUpper(word[0]) + word.Substring(1).Replace('_', ' ');
+            return fixedWord;
+        }
+        public static string FixWordsForApi(string word)
+        {
+            string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_');
+            return fixedWord;
+        }
         public static double ConvertKgToPounds(double kg)
         {
             double pounds = kg * 2.2046226218;
