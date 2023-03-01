@@ -28,8 +28,9 @@ namespace TrainingAppMauiVersion2.NewFolder
         }
         public static string FixWordsForApi(string word)
         {
-            string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_');
-            return fixedWord;
+            string newWord = word.ToLower().Replace(' ', '_');
+            string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_'); //TODO: avvakta för att ta bort om den andra inte strular
+            return newWord;
         }
         public static double ConvertKgToPounds(double kg)
         {
