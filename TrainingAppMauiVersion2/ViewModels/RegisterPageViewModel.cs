@@ -14,19 +14,19 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class RegisterPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        string registerUserName;
+        string userName;
         [ObservableProperty]
-        string registerPassWord;
+        string passWord;
         [ObservableProperty]
-        string registerName;
+        string name;
         [ObservableProperty]
-        DateTime registerBirthDate;
+        string birthDate;
         [ObservableProperty]
-        int registerWeight;
+        string weight;
         [ObservableProperty]
-        int registerHeight;
+        string height;
         [ObservableProperty]
-        string registerEmail;
+        string email;
 
         [RelayCommand]
         public async void OnClickedRegisterButton()
@@ -38,19 +38,35 @@ namespace TrainingAppMauiVersion2.ViewModels
             var myCollection = database.GetCollection<Person>("MyUsers");
             //Skapa en knapp för att registera personen om alla inmatningar är korrekta
             //och sen gå tillbaka till mainpage, för att logga in med valda parametrar
-            Person person = new Person()
+            try
             {
-                Id = new Guid(),
-                UserName = RegisterUserName,
-                PassWord = RegisterPassWord,
-                Name = RegisterName,
-                Birthday = RegisterBirthDate,
-                Weight = RegisterWeight,
-                Height = RegisterHeight,
-                Email = RegisterEmail
-            };
-            Task savePerson = SaveUser(person, myCollection);
-            await savePerson;
+                Person person = new Person()
+                {
+                    Id = new Guid(),
+                    UserName = UserName,
+                    PassWord = PassWord,
+                    Name = Name,
+                    //Birthday = Convert.ToDateTime(BirthDate),
+                    //Weight = Convert.ToInt32(Weight),
+                    //Height = Convert.ToInt32(Height),
+                    //Email = Email
+                };
+                Task savePerson = SaveUser(person, myCollection);
+                await savePerson;
+                await App.Current.MainPage.DisplayAlert("Success", "You are now registred as a new user", "Continue");
+                UserName = string.Empty;
+                PassWord = string.Empty;
+                Name = string.Empty;
+                //BirthDate = string.Empty;
+                //Weight = string.Empty;
+                //Height = string.Empty;
+                //Email = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Failed", "Some field is incorrect", "Try again");
+
+            }
         }
         private static async Task SaveUser(Person person, IMongoCollection<Person> myCollection)
         {

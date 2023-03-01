@@ -14,7 +14,14 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
+        string userName;
+
+        [ObservableProperty]
+        string passWord;
+
+        [ObservableProperty]
         OpenWeather oWeather;
+
         public MainPageViewModel()
         {
             OWeather = new OpenWeather();
@@ -61,5 +68,6 @@ namespace TrainingAppMauiVersion2.ViewModels
             }
             return weatherData;
         }
+
     }
 }

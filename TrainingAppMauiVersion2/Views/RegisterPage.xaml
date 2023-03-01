@@ -19,34 +19,36 @@
                 FontSize="Header"/>
 
             <Entry
-                x:Name="RegisterUserName"
+                Text="{Binding UserName}"
                 Placeholder="Username"/>
 
             <Entry
-                x:Name="RegisterPassWord"
+                Text="{Binding PassWord}"
                 Placeholder="Password"
                 IsPassword="True"/>
 
             <Entry
-                x:Name="RegisterName"
+                Text="{Binding Name}"
                 Placeholder="Name"/>
 
-            <Entry
-                x:Name="RegisterBirthDate"
+            <!--<Entry
+                Text="{Binding BirthDate}"
                 Placeholder="Date of birth (yyyy-mm-dd)"/>
 
             <Entry
-                x:Name="RegisterWeight"
+                Text="{Binding Weight}"
                 Placeholder="Weigtht in kg"/>
 
             <Entry
-                x:Name="RegisterHeight"
+                Text="{Binding Height}"
                 Placeholder="Height in cm"/>
 
             <Entry
-                x:Name="RegisterEmail"
-                Placeholder="Email"/>
+                Text="{Binding Email}"
+                Placeholder="Email"/>-->
+            
             <Button
+                Command="{Binding ClickedRegisterButtonCommand}"
                 Text="Register"/>
             <Button
                 Text="Back"

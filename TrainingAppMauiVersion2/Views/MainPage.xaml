@@ -11,9 +11,9 @@
             Padding="30,0"
             VerticalOptions="Center">
             <Label
-                Text="{Binding Weather.Name}"/>
+                Text="{Binding OWeather.Name}"/>
             <Label
-                Text="{Binding Weather.Main.Temp}"/>
+                Text="{Binding OWeather.Main.Temp}"/>
 
             <Image
                 Source="dotnet_bot.png"
@@ -21,16 +21,18 @@
                 HeightRequest="200"
                 HorizontalOptions="Center" />
             <Entry 
+                x:Name="UserName"
                 Placeholder="Username"/>
             <Entry
+                x:Name="PassWord"
                 Placeholder="Password"
                 IsPassword="True"/>
 
 
             <Button
-                x:Name="MyLogIn"
                 Text="Log in"
                 WidthRequest="220"
+                Clicked="OnClickedLogIn"
                 HorizontalOptions="Center" />
 
             <Button

@@ -10,7 +10,7 @@ public partial class RegisterPage : ContentPage
         BindingContext = new RegisterPageViewModel();
 
     }
-    private void OnBackClicked(object sender, EventArgs e)
+    public void OnBackClicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
     }
