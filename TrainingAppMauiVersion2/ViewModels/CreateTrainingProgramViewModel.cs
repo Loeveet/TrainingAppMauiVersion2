@@ -8,9 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.NewFolder;
 using TrainingAppMauiVersion2.SessionData;
+using TrainingAppMauiVersion2.Views;
 
 namespace TrainingAppMauiVersion2.ViewModels
 {
@@ -105,10 +107,12 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         // TODO: Fixa så att man kan gå vidare och skriva ut en lista med hjälp av ChosenMuscle
         [RelayCommand]
-        public static async void ChooseMuscle(string muscle)
+        public static void ChooseMuscle(string muscle)
         {
             var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
             SiteVariables.ChosenMuscle = fixedMuscle;
+            
         }
+
     }
 }

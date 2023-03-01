@@ -28,7 +28,8 @@
                                 Command="{Binding Source={RelativeSource 
                                     AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                     Path=ChooseMuscleCommand}"
-                                CommandParameter="{Binding .}"/>
+                                CommandParameter="{Binding .}"
+                                Clicked="OnClickedRegister"/>
 
                         </Grid>
 
