@@ -62,7 +62,7 @@ namespace TrainingAppMauiVersion2.ViewModels
                 //Height = string.Empty;
                 //Email = string.Empty;
             }
-            catch (Exception ex)
+            catch 
             {
                 await App.Current.MainPage.DisplayAlert("Failed", "Some field is incorrect", "Try again");
 

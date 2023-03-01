@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TrainingAppMauiVersion2.Models"
+             x:Class="TrainingAppMauiVersion2.Views.CreateTrainingProgramPage"
+             xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
+             x:DataType="viewmodel:CreateTrainingProgramViewModel"
+             Title="CreateTrainingProgramPage">
+    <VerticalStackLayout>
+        <Entry
+            Text="{Binding Name}"
+            Placeholder="Give your training program a name"/>
+        <Button
+            Text="Press to create new program"
+            Command="{Binding ClickedGetProgramsButtonCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

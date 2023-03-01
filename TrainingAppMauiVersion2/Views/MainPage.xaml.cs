@@ -1,4 +1,5 @@
-﻿using TrainingAppMauiVersion2.ViewModels;
+﻿using TrainingAppMauiVersion2.SessionData;
+using TrainingAppMauiVersion2.ViewModels;
 
 namespace TrainingAppMauiVersion2;
 
@@ -33,14 +34,15 @@ public partial class MainPage : ContentPage
         {
             if (UserName.Text == user.UserName && PassWord.Text == user.PassWord)
             {
-                await App.Current.MainPage.DisplayAlert("Success", "Welcome " + user.Name, "Continue");
+                await DisplayAlert("Success", "Welcome " + user.Name, "Continue");
+                SiteVariables.LoggedInPerson = user;
                 await Navigation.PushAsync(new Views.LoggedInPage());
                 return;
             }
 
         }
 
-        await App.Current.MainPage.DisplayAlert("Failed to log in", "Wrong username or password", "Try again");
+        await DisplayAlert("Failed to log in", "Wrong username or password", "Try again");
 
     }
 }
