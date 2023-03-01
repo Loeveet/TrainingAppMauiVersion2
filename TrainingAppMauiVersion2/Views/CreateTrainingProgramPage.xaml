@@ -6,12 +6,35 @@
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:CreateTrainingProgramViewModel"
              Title="CreateTrainingProgramPage">
-    <VerticalStackLayout>
-        <Entry
+    <ScrollView>
+        <VerticalStackLayout>
+            <CollectionView
+                ItemsSource="{Binding Muscles}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate 
+                        x:DataType="{x:Type x:String}">
+                        <Grid
+                            RowDefinitions="*"
+                            ColumnDefinitions="200, *">
+
+                            <Frame
+                                Grid.Column="0">
+                                <Label
+                                    Text="{Binding .}"/>
+                            </Frame>
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Entry
             Text="{Binding Name}"
             Placeholder="Give your training program a name"/>
-        <Button
+            <Button
             Text="Press to create new program"
             Command="{Binding ClickedGetProgramsButtonCommand}"/>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
