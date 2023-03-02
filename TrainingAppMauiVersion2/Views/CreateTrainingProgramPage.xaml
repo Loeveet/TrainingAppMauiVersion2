@@ -16,20 +16,15 @@
                             RowDefinitions="*"
                             ColumnDefinitions="200, 100">
 
-                            <Frame
-                                Grid.Column="0">
-                                <Label
-                                    Text="{Binding .}"/>
-                            </Frame>
                             <Button
-                                x:Name="{Binding .}"
-                                Grid.Column="1"
-                                Text="Check out"
+                                Text="{Binding .}"
+                                TextColor="Black"
+                                BackgroundColor="White"
                                 Command="{Binding Source={RelativeSource 
                                     AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                     Path=ChooseMuscleCommand}"
                                 CommandParameter="{Binding .}"
-                                Clicked="OnClickedRegister"/>
+                                Clicked="OnClickedChooseExercise"/>
 
                         </Grid>
 

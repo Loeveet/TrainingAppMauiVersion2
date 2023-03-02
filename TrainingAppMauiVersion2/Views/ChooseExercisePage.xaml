@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainingAppMauiVersion2.Views.ChooseExercisePage"
+             xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
+             x:DataType="viewmodel:ChooseExerciseViewModel"
+             Title="ChooseExercisePage">
+    <VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout>
+                <ListView
+                ItemsSource="{Binding Exercises}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                            RowDefinitions="*"
+                            ColumnDefinitions="200, 100">
+                                
+                                <Label
+                                    Text="{Binding Name}"/>
+
+
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

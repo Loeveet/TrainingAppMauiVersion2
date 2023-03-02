@@ -9,11 +9,9 @@ public partial class CreateTrainingProgramPage : ContentPage
 		InitializeComponent();
 		BindingContext = new ViewModels.CreateTrainingProgramViewModel();
 	}
-	//TODO: skapa ny sida för att skriva ut övningar, registerpage som det står här är bara ett test.
-    private async void OnClickedRegister(object sender, EventArgs e)
+    private async void OnClickedChooseExercise(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Views.RegisterPage());
-
+        await Navigation.PushAsync(new ChooseExercisePage());
     }
 
 }

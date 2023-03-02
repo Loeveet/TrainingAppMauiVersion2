@@ -77,7 +77,7 @@ namespace TrainingAppMauiVersion2.ViewModels
                 };
                 Task saveProgram = SaveProgram(program, myCollection);
                 await saveProgram;
-                await App.Current.MainPage.DisplayAlert("Success", "You created " + Name, "Continue");
+                await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
             }
 
         }
