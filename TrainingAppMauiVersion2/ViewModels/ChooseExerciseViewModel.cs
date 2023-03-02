@@ -41,25 +41,10 @@ namespace TrainingAppMauiVersion2.ViewModels
         }
         public async void GetTheExercises()
         {
-            var exercises = await GetExercices();
+            var exercises = await Connections.Connection.GetExercices();
             Exercises = exercises;
         }
 
-        public static async Task<ObservableCollection<Exercise>> GetExercices()
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.api-ninjas.com");
-            client.DefaultRequestHeaders.Add("X-Api-Key", "4DGnPLCofmkfjBtzIHc4Z55iv07P2Aw6vV57v5SP");
-            ObservableCollection<Exercise> exercises = null;
-            //TODO: tror jag gör fel här. FNULA!
-            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle);
-            if (response.IsSuccessStatusCode)
-            {
-                string responseString = await response.Content.ReadAsStringAsync();
-                exercises = JsonSerializer.Deserialize<ObservableCollection<Exercise>>(responseString);
-            }
 
-            return exercises;
-        }
     }
 }

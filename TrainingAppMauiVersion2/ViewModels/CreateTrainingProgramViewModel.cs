@@ -44,7 +44,8 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             Person = SiteVariables.LoggedInPerson;
             Muscles = new ObservableCollection<string>();
-            AddMuscles();      
+            AddMuscles();
+            SiteVariables.ChosenDifficultness = string.Empty;
         }
         private void AddMuscles()
         {
@@ -66,22 +67,22 @@ namespace TrainingAppMauiVersion2.ViewModels
                 .AsQueryable()
                 .SingleOrDefault(x => x.Id == SiteVariables.LoggedInPerson.Id);
 
+
+            TrainingProgram program = new()
             {
-                TrainingProgram program = new()
-                {
-                    Id = new Guid(),
-                    Person = Person,
-                    Name = Name,
-                    Exercises = new List<Exercise>()
+                Id = new Guid(),
+                Person = Person,
+                Name = Name,
+                Exercises = new List<Exercise>()
 
-                };
-                user.Programs.Add(program);
-                await SaveProgram(program, myTrainingPrograms);
-                await users.ReplaceOneAsync(x => x.Id == SiteVariables.LoggedInPerson.Id, user);
-                await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
-            }
+            };
+            user.Programs.Add(program);
+            await SaveProgram(program, myTrainingPrograms);
+            await users.ReplaceOneAsync(x => x.Id == SiteVariables.LoggedInPerson.Id, user);
+            await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
 
-        }//TODO: Skapa metod för att även spara programmet hos användaren. kanske en delegat?
+
+        }
         private static async Task SaveProgram(TrainingProgram program, IMongoCollection<TrainingProgram> myTrainingPrograms)
         {
             await myTrainingPrograms.InsertOneAsync(program);
@@ -92,7 +93,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
             SiteVariables.ChosenMuscle = fixedMuscle;
-            
+
         }
 
     }

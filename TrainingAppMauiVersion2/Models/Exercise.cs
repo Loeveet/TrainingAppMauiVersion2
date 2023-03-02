@@ -65,22 +65,5 @@ namespace TrainingAppMauiVersion2.Models
             "traps",
             "triceps"
         };
-        public static async Task<List<Exercise>> GetExercices(string uri)
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.api-ninjas.com/");
-            client.DefaultRequestHeaders.Add("X-Api-Key", "E2O3R8zknVI8Lo/k0kdq7A==JBFTCWQdZStbgUQq");
-
-            List<Exercise> exercises = null;
-
-            HttpResponseMessage response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string responseString = await response.Content.ReadAsStringAsync();
-                exercises = JsonSerializer.Deserialize<List<Exercise>>(responseString);
-            }
-
-            return exercises;
-        }
     }
 }

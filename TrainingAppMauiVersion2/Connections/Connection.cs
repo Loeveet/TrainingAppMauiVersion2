@@ -1,24 +1,19 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Authentication;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
+using TrainingAppMauiVersion2.SessionData;
 
 namespace TrainingAppMauiVersion2.Connections
 {
     internal static class Connection
     {
-        private static MongoClient GetClient()
-        {
-            string connectionString = @"mongodb + srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority";
-            MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(connectionString));
-            settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-            var mongoClient = new MongoClient(settings);
-            return mongoClient;
-        }
 
         public static IMongoCollection<Person> UserCollection()
         {
@@ -38,6 +33,23 @@ namespace TrainingAppMauiVersion2.Connections
             var database = client.GetDatabase("TrainingAppPerson");
             var myTrainingPrograms = database.GetCollection<TrainingProgram>("MyPrograms");
             return myTrainingPrograms;
+        }
+
+        public static async Task<ObservableCollection<Exercise>> GetExercices()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("https://api.api-ninjas.com");
+            client.DefaultRequestHeaders.Add("X-Api-Key", "4DGnPLCofmkfjBtzIHc4Z55iv07P2Aw6vV57v5SP");
+            ObservableCollection<Exercise> exercises = null;
+            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle + 
+                (SiteVariables.ChosenDifficultness != string.Empty ? "&difficulty=" + SiteVariables.ChosenDifficultness : string.Empty));
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = await response.Content.ReadAsStringAsync();
+                exercises = JsonSerializer.Deserialize<ObservableCollection<Exercise>>(responseString);
+            }
+
+            return exercises;
         }
 
     }
