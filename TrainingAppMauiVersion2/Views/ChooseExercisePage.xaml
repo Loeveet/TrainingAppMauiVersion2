@@ -5,28 +5,39 @@
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ChooseExerciseViewModel"
              Title="ChooseExercisePage">
-    <VerticalStackLayout>
         <ScrollView>
+    <VerticalStackLayout>
             <VerticalStackLayout>
                 <ListView
-            ItemsSource="{Binding Exercises}">
+                 ItemsSource="{Binding Exercises}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid 
-                                    Padding="10"
-                                    RowDefinitions="auto, *"
-                                    BackgroundColor="Blue">
+                                    Padding="5"
+                                    RowDefinitions="auto, auto, auto, auto, *">
 
                                     <Label
-                                        Text="{Binding Name}"
+                                        Text="{Binding Name, StringFormat='Name: {0}' }"
                                         FontSize="20"
                                         BackgroundColor="Beige"/>
 
                                     <Label
-                                        Text="{Binding Difficulty}"
+                                        Text="{Binding Difficulty, StringFormat='Difficultness: {0}'}"
                                         Grid.Row="1"
-                                        FontSize="10"/>
+                                        FontSize="15"/>
+                                    <Label
+                                        Text="{Binding Type, StringFormat='Type of training: {0}'}"
+                                        Grid.Row="2"
+                                        FontSize="15"/>
+                                    <Label
+                                        Text="{Binding Equipment, StringFormat='Equpments: {0}'}"
+                                        Grid.Row="3"
+                                        FontSize="15"/>
+                                    <Label
+                                        Text="{Binding Instructions, StringFormat='Instructions: {0}'}"
+                                        Grid.Row="4"
+                                        FontSize="15"/>
 
                                 </Grid>
                             </ViewCell>
@@ -34,6 +45,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </VerticalStackLayout>
-        </ScrollView>
     </VerticalStackLayout>
+        </ScrollView>
 </ContentPage>
