@@ -36,27 +36,27 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             Exercises = new ObservableCollection<Exercise>();
             ChosenMuscle = SiteVariables.ChosenMuscle;
-            var exercisesPerMuscle = GetExercices();
-            foreach (var exercise in exercisesPerMuscle.Result)
-            {
-                Exercises.Add(exercise);
-            }
+            GetTheExercises();
+
+        }
+        public async void GetTheExercises()
+        {
+            var exercises = await GetExercices();
+            Exercises = exercises;
         }
 
-        [RelayCommand]
-        public static async Task<List<Exercise>> GetExercices()
+        public static async Task<ObservableCollection<Exercise>> GetExercices()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.api-ninjas.com/");
-            client.DefaultRequestHeaders.Add("X-Api-Key", "Z1AsZOLR7z7cW8II5n1oaw==4xgbZdGvTQe5wyub");
-
-            List<Exercise> exercises = null;
+            client.BaseAddress = new Uri("https://api.api-ninjas.com");
+            client.DefaultRequestHeaders.Add("X-Api-Key", "4DGnPLCofmkfjBtzIHc4Z55iv07P2Aw6vV57v5SP");
+            ObservableCollection<Exercise> exercises = null;
             //TODO: tror jag gör fel här. FNULA!
-            HttpResponseMessage response = await client.GetAsync($"v1/exercises?muscle={SiteVariables.ChosenMuscle}");
+            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle);
             if (response.IsSuccessStatusCode)
             {
                 string responseString = await response.Content.ReadAsStringAsync();
-                exercises = JsonSerializer.Deserialize<List<Exercise>>(responseString);
+                exercises = JsonSerializer.Deserialize<ObservableCollection<Exercise>>(responseString);
             }
 
             return exercises;

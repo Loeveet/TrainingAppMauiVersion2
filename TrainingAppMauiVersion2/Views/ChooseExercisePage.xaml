@@ -9,24 +9,30 @@
         <ScrollView>
             <VerticalStackLayout>
                 <ListView
-                ItemsSource="{Binding Exercises}">
+            ItemsSource="{Binding Exercises}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid
-                            RowDefinitions="*"
-                            ColumnDefinitions="200, 100">
-                                
-                                <Label
-                                    Text="{Binding Name}"/>
+                            <ViewCell>
+                                <Grid 
+                                    Padding="10"
+                                    RowDefinitions="auto, *"
+                                    BackgroundColor="Blue">
 
+                                    <Label
+                                        Text="{Binding Name}"
+                                        FontSize="20"
+                                        BackgroundColor="Beige"/>
 
-                            </Grid>
+                                    <Label
+                                        Text="{Binding Difficulty}"
+                                        Grid.Row="1"
+                                        FontSize="10"/>
 
+                                </Grid>
+                            </ViewCell>
                         </DataTemplate>
-
                     </ListView.ItemTemplate>
                 </ListView>
-                
             </VerticalStackLayout>
         </ScrollView>
     </VerticalStackLayout>
