@@ -20,20 +20,24 @@ namespace TrainingAppMauiVersion2.Connections
             return mongoClient;
         }
 
-        public static IMongoCollection<Models.Person> UserCollection()
+        public static IMongoCollection<Person> UserCollection()
         {
-            var client = GetClient();
+            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var client = new MongoClient(settings);
             var database = client.GetDatabase("TrainingAppPerson");
-            var myCollection = database.GetCollection<Models.Person>("Person");
-            return myCollection;
+            var myUsers = database.GetCollection<Person>("Person");
+            return myUsers;
         }
 
         public static IMongoCollection<TrainingProgram> TrainingProgramCollection()
         {
-            var client = GetClient();
+            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var client = new MongoClient(settings);
             var database = client.GetDatabase("TrainingAppPerson");
-            var myCollection = database.GetCollection<TrainingProgram>("MyPrograms");
-            return myCollection;
+            var myTrainingPrograms = database.GetCollection<TrainingProgram>("MyPrograms");
+            return myTrainingPrograms;
         }
 
     }

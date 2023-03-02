@@ -59,12 +59,8 @@ namespace TrainingAppMauiVersion2.ViewModels
         [RelayCommand]
         public async void ClickedGetProgramsButton()
         {
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
-            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-            var client = new MongoClient(settings);
-            var database = client.GetDatabase("TrainingAppPerson");
-            var myCollection = database.GetCollection<TrainingProgram>("MyPrograms");
 
+            var myTrainingPrograms = Connections.Connection.TrainingProgramCollection();
 
             {
                 TrainingProgram program = new()
@@ -75,37 +71,17 @@ namespace TrainingAppMauiVersion2.ViewModels
                     Exercises = new List<Exercise>()
 
                 };
-                Task saveProgram = SaveProgram(program, myCollection);
+                Task saveProgram = SaveProgram(program, myTrainingPrograms);
                 await saveProgram;
                 await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
             }
 
-        }
-        private static async Task SaveProgram(TrainingProgram program, IMongoCollection<TrainingProgram> myCollection)
+        }//TODO: Skapa metod för att även spara programmet hos användaren. kanske en delegat?
+        private static async Task SaveProgram(TrainingProgram program, IMongoCollection<TrainingProgram> myTrainingPrograms)
         {
-            await myCollection.InsertOneAsync(program);
+            await myTrainingPrograms.InsertOneAsync(program);
         }
 
-        [RelayCommand]
-        public static async Task<ObservableCollection<Exercise>> GetExercices(string muscle)
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api.api-ninjas.com/v1/exercises?muscle=");
-            client.DefaultRequestHeaders.Add("X-Api-Key", "E2O3R8zknVI8Lo/k0kdq7A==JBFTCWQdZStbgUQq");
-
-            ObservableCollection<Exercise> exercises = null;
-
-            HttpResponseMessage response = await client.GetAsync(muscle);
-            if (response.IsSuccessStatusCode)
-            {
-                string responseString = await response.Content.ReadAsStringAsync();
-                exercises = JsonSerializer.Deserialize<ObservableCollection<Exercise>>(responseString);
-            }
-
-            return exercises;
-        }
-
-        // TODO: Fixa så att man kan gå vidare och skriva ut en lista med hjälp av ChosenMuscle
         [RelayCommand]
         public static void ChooseMuscle(string muscle)
         {
