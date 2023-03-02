@@ -61,6 +61,10 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
 
             var myTrainingPrograms = Connections.Connection.TrainingProgramCollection();
+            var users = Connections.Connection.UserCollection();
+            var user = users
+                .AsQueryable()
+                .SingleOrDefault(x => x.Id == SiteVariables.LoggedInPerson.Id);
 
             {
                 TrainingProgram program = new()
@@ -71,8 +75,9 @@ namespace TrainingAppMauiVersion2.ViewModels
                     Exercises = new List<Exercise>()
 
                 };
-                Task saveProgram = SaveProgram(program, myTrainingPrograms);
-                await saveProgram;
+                user.Programs.Add(program);
+                await SaveProgram(program, myTrainingPrograms);
+                await users.ReplaceOneAsync(x => x.Id == SiteVariables.LoggedInPerson.Id, user);
                 await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
             }
 

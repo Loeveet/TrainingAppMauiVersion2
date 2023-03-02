@@ -26,7 +26,7 @@ namespace TrainingAppMauiVersion2.Connections
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
             var database = client.GetDatabase("TrainingAppPerson");
-            var myUsers = database.GetCollection<Person>("Person");
+            var myUsers = database.GetCollection<Person>("MyUsers");
             return myUsers;
         }
 
