@@ -10,9 +10,9 @@ namespace TrainingAppMauiVersion2.SessionData
     {
         public static string SearchOtherExercises { get; set; }
         public static Models.Person LoggedInPerson { get; set; } 
-        public static string ChosenMuscle { get; set; } = string.Empty;
-        public static string ChosenDifficultness { get; set; } = string.Empty;
-        public static string ChosenTypeOfExercise { get; set; } = string.Empty;
+        public static string ChosenMuscle { get; set; } = "All";
+        public static string ChosenDifficultness { get; set; } = "All";
+        public static string ChosenTypeOfExercise { get; set; } = "All";
 
     }
 }

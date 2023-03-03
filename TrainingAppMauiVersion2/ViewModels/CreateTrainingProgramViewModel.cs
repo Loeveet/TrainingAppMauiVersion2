@@ -46,8 +46,19 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         public ObservableCollection<string> typesOfExercices;
 
+        [ObservableProperty]
+        string chosenDifficulty;
+
+        [ObservableProperty]
+        string chosenMuscle;
+
+        [ObservableProperty]
+        string chosenType;
         public CreateTrainingProgramViewModel()
         {
+            ChosenMuscle = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenMuscle);
+            ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenDifficultness);
+            ChosenType = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenTypeOfExercise);
             Person = SiteVariables.LoggedInPerson;
             Muscles = new ObservableCollection<string>();
             DifficultyLevels = new ObservableCollection<string>();
@@ -120,6 +131,20 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
             SiteVariables.ChosenMuscle = fixedMuscle;
+
+        }
+        [RelayCommand]
+        public static void ChooseDifficulty(string diff)
+        {
+            var fixedDiff = HelperMethods.FixWordsForApi(diff);
+            SiteVariables.ChosenDifficultness = fixedDiff;
+
+        }
+        [RelayCommand]
+        public static void ChooseType(string type)
+        {
+            var fixedType = HelperMethods.FixWordsForApi(type);
+            SiteVariables.ChosenTypeOfExercise = fixedType;
 
         }
 
