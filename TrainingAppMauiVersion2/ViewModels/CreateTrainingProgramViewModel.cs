@@ -40,12 +40,21 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         public ObservableCollection<string> muscles;
 
+        [ObservableProperty]
+        public ObservableCollection<string> difficultyLevels;
+
+        [ObservableProperty]
+        public ObservableCollection<string> typesOfExercices;
+
         public CreateTrainingProgramViewModel()
         {
             Person = SiteVariables.LoggedInPerson;
             Muscles = new ObservableCollection<string>();
+            DifficultyLevels = new ObservableCollection<string>();
+            TypesOfExercices = new ObservableCollection<string>();
             AddMuscles();
-            SiteVariables.ChosenDifficultness = string.Empty;
+            AddDifficultyLevels();
+            AddTypesOfExercices();
         }
         private void AddMuscles()
         {
@@ -53,6 +62,24 @@ namespace TrainingAppMauiVersion2.ViewModels
             foreach (var m in muscleArray)
             {
                 Muscles.Add(m);
+
+            }
+        }
+        private void AddDifficultyLevels()
+        {
+            var difficultyLevelsArray = HelperMethods.CapitalizeFirstLetterInArray(Exercise.difficultyLevels);
+            foreach (var m in difficultyLevelsArray)
+            {
+                DifficultyLevels.Add(m);
+
+            }
+        }
+        private void AddTypesOfExercices()
+        {
+            var muscleArray = HelperMethods.CapitalizeFirstLetterInArray(Exercise.typesOfExercices);
+            foreach (var m in muscleArray)
+            {
+                TypesOfExercices.Add(m);
 
             }
         }
