@@ -41,8 +41,8 @@ namespace TrainingAppMauiVersion2.Connections
             client.BaseAddress = new Uri("https://api.api-ninjas.com");
             client.DefaultRequestHeaders.Add("X-Api-Key", "4DGnPLCofmkfjBtzIHc4Z55iv07P2Aw6vV57v5SP");
             ObservableCollection<Exercise> exercises = null;
-            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle + 
-                (SiteVariables.ChosenDifficultness != string.Empty ? "&difficulty=" + SiteVariables.ChosenDifficultness : string.Empty));
+            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle);
+            //+ (SiteVariables.ChosenDifficultness != string.Empty ? "&difficulty=" + SiteVariables.ChosenDifficultness : string.Empty));
             if (response.IsSuccessStatusCode)
             {
                 string responseString = await response.Content.ReadAsStringAsync();

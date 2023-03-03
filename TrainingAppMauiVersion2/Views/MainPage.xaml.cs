@@ -6,8 +6,7 @@ namespace TrainingAppMauiVersion2;
 public partial class MainPage : ContentPage
 {
 
-
-	public MainPage()
+    public MainPage()
 	{
 		InitializeComponent();
 		BindingContext = new ViewModels.MainPageViewModel();
