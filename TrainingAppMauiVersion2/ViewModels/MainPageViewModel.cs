@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
+using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.ViewModels
 {
@@ -38,7 +39,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             return users;
 
         }
-        private static async Task<List<Models.Person>> GetAllUsers(IMongoCollection<Models.Person> myCollection)
+        private static async Task<List<Person>> GetAllUsers(IMongoCollection<Models.Person> myCollection)
         {
             var allUsers = await myCollection.AsQueryable().ToListAsync();
             return allUsers;

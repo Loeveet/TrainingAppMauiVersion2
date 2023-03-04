@@ -1,10 +1,14 @@
-﻿using TrainingAppMauiVersion2.SessionData;
+﻿using TrainingAppMauiVersion2.Models;
+using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.ViewModels;
+using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2;
 
 public partial class MainPage : ContentPage
 {
+
+    LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
 
     public MainPage()
 	{
@@ -34,7 +38,8 @@ public partial class MainPage : ContentPage
             if (UserName.Text == user.UserName && PassWord.Text == user.PassWord)
             {
                 await DisplayAlert("Success", "Welcome " + user.Name, "Continue");
-                SiteVariables.LoggedInPerson = user;
+                loggedInUser.SetLoggedInPerson(user);
+                //SiteVariables.LoggedInPerson = user;
                 await Navigation.PushAsync(new Views.LoggedInPage());
                 return;
             }

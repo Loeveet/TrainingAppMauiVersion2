@@ -23,13 +23,14 @@ namespace TrainingAppMauiVersion2.NewFolder
 
         public static string CapitalizeFirstLetter(string word)
         {
+            if (word == "" || word == null) return "All";
             string fixedWord = char.ToUpper(word[0]) + word.Substring(1).Replace('_', ' ');
             return fixedWord;
         }
         public static string FixWordsForApi(string word)
         {
             string newWord = word.ToLower().Replace(' ', '_');
-            string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_'); //TODO: avvakta för att ta bort om den andra inte strular
+            //string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_'); //TODO: avvakta för att ta bort om den andra inte strular
             return newWord;
         }
         public static double ConvertKgToPounds(double kg)

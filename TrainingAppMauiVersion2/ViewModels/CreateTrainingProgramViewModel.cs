@@ -12,12 +12,18 @@ using System.Windows.Input;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.NewFolder;
 using TrainingAppMauiVersion2.SessionData;
+using TrainingAppMauiVersion2.Singletons;
 using TrainingAppMauiVersion2.Views;
 
 namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class CreateTrainingProgramViewModel : ObservableObject
     {
+
+        LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+
+        ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
+
         [ObservableProperty]
         ObservableCollection<TrainingProgram> trainingPrograms;
 
@@ -56,10 +62,15 @@ namespace TrainingAppMauiVersion2.ViewModels
         string chosenType;
         public CreateTrainingProgramViewModel()
         {
-            ChosenMuscle = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenMuscle);
-            ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenDifficultness);
-            ChosenType = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenTypeOfExercise);
-            Person = SiteVariables.LoggedInPerson;
+            
+            Person = user.GetLoggedInPerson();
+            ChosenMuscle = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenMuscle());
+            //ChosenMuscle = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenMuscle);
+            ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenDifficulty());
+            //ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenDifficultness);
+            ChosenType = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenTypeOfExercise());
+            //ChosenType = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenTypeOfExercise);
+            //Person = SiteVariables.LoggedInPerson;
             Muscles = new ObservableCollection<string>();
             DifficultyLevels = new ObservableCollection<string>();
             TypesOfExercices = new ObservableCollection<string>();
@@ -103,7 +114,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             var users = Connections.Connection.UserCollection();
             var user = users
                 .AsQueryable()
-                .SingleOrDefault(x => x.Id == SiteVariables.LoggedInPerson.Id);
+                .SingleOrDefault(x => x.Id == Person.Id);
 
 
             TrainingProgram program = new()
@@ -116,7 +127,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             };
             user.Programs.Add(program);
             await SaveProgram(program, myTrainingPrograms);
-            await users.ReplaceOneAsync(x => x.Id == SiteVariables.LoggedInPerson.Id, user);
+            await users.ReplaceOneAsync(x => x.Id == Person.Id, user);
             await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
 
 
@@ -127,24 +138,29 @@ namespace TrainingAppMauiVersion2.ViewModels
         }
 
         [RelayCommand]
-        public static void ChooseMuscle(string muscle)
+        public void ChooseMuscle(string muscle)
         {
-            var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
-            SiteVariables.ChosenMuscle = fixedMuscle;
+            chosenItem.SetChosenMuscle(HelperMethods.FixWordsForApi(muscle));
+            //var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
+            //SiteVariables.ChosenMuscle = fixedMuscle;
 
         }
         [RelayCommand]
-        public static void ChooseDifficulty(string diff)
+        public void ChooseDifficulty(string diff)
         {
-            var fixedDiff = HelperMethods.FixWordsForApi(diff);
-            SiteVariables.ChosenDifficultness = fixedDiff;
+            chosenItem.SetChosenDifficulty(HelperMethods.FixWordsForApi(diff));
+
+            //var fixedDiff = HelperMethods.FixWordsForApi(diff);
+            //SiteVariables.ChosenDifficultness = fixedDiff;
 
         }
         [RelayCommand]
-        public static void ChooseType(string type)
+        public void ChooseType(string type)
         {
-            var fixedType = HelperMethods.FixWordsForApi(type);
-            SiteVariables.ChosenTypeOfExercise = fixedType;
+            chosenItem.SetChosenTypeOfExercise(HelperMethods.FixWordsForApi(type));
+
+            //var fixedType = HelperMethods.FixWordsForApi(type);
+            //SiteVariables.ChosenTypeOfExercise = fixedType;
 
         }
 
