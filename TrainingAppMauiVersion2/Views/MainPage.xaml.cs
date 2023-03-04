@@ -8,6 +8,18 @@ namespace TrainingAppMauiVersion2;
 
 public partial class MainPage : ContentPage
 {
+    //TODO: Skapa en sträng av inparametrarna så jag kan få fram rätt övningar
+    //TODO: I första hand lägga till övningar i en lista
+    //TODO: I andra hand lägga till vikt och repetioner per övning och spara det i ett exerciseset för att sedan läggas till i trainingprogram
+    //TODO: Skriva ut personliga träningsprogram
+    //TODO: Kunna välja träningsprogram för att läsa av
+    //TODO: Kunna ändra/ta bort träningsprogram
+    //TODO: Försöka att räkna ut förbrukning per träningsprogram
+    //TODO: Lägga till otherexercises, som t ex löpning och sånt. Kanske bara visas för inspriration
+    //TODO: Snygga till vädret på förstasidan för att rekomendera inne eller ute träning
+    //TODO: Mindgames, lägga till en riddle och/eller trivia
+    //TODO: Göra hela appen snyggare
+    //TODO: Får jag inte till buttons i createtrainingprogrampage så gör om allt till label med knapp bredvid
 
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
 
