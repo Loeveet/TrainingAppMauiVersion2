@@ -65,20 +65,16 @@ namespace TrainingAppMauiVersion2.ViewModels
             
             Person = user.GetLoggedInPerson();
             ChosenMuscle = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenMuscle());
-            //ChosenMuscle = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenMuscle);
             ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenDifficulty());
-            //ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenDifficultness);
             ChosenType = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenTypeOfExercise());
-            //ChosenType = HelperMethods.CapitalizeFirstLetter(SiteVariables.ChosenTypeOfExercise);
-            //Person = SiteVariables.LoggedInPerson;
             Muscles = new ObservableCollection<string>();
             DifficultyLevels = new ObservableCollection<string>();
             TypesOfExercices = new ObservableCollection<string>();
-            AddMuscles();
+            //AddMuscles();
             AddDifficultyLevels();
             AddTypesOfExercices();
         }
-        private void AddMuscles()
+        public void AddMuscles()
         {
             var muscleArray = HelperMethods.CapitalizeFirstLetterInArray(Exercise.muscles);
             foreach (var m in muscleArray)
@@ -141,8 +137,6 @@ namespace TrainingAppMauiVersion2.ViewModels
         public void ChooseMuscle(string muscle)
         {
             chosenItem.SetChosenMuscle(HelperMethods.FixWordsForApi(muscle));
-            //var fixedMuscle = HelperMethods.FixWordsForApi(muscle);
-            //SiteVariables.ChosenMuscle = fixedMuscle;
 
         }
         [RelayCommand]
@@ -150,17 +144,11 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             chosenItem.SetChosenDifficulty(HelperMethods.FixWordsForApi(diff));
 
-            //var fixedDiff = HelperMethods.FixWordsForApi(diff);
-            //SiteVariables.ChosenDifficultness = fixedDiff;
-
         }
         [RelayCommand]
         public void ChooseType(string type)
         {
             chosenItem.SetChosenTypeOfExercise(HelperMethods.FixWordsForApi(type));
-
-            //var fixedType = HelperMethods.FixWordsForApi(type);
-            //SiteVariables.ChosenTypeOfExercise = fixedType;
 
         }
 

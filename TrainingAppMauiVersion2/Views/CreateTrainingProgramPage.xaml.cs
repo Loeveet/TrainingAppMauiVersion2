@@ -6,13 +6,23 @@ namespace TrainingAppMauiVersion2.Views;
 
 public partial class CreateTrainingProgramPage : ContentPage
 {
+    bool pageStarted;
+    ViewModels.CreateTrainingProgramViewModel vm = new ViewModels.CreateTrainingProgramViewModel();
 
     public CreateTrainingProgramPage()
 	{
 		InitializeComponent();
-        BindingContext = new CreateTrainingProgramViewModel();
+        BindingContext = vm;
     }
-
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (!pageStarted)
+        {
+            vm.AddMuscles();
+            pageStarted = true;
+        }
+    }
     private async void OnClickedChooseExercise(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ChooseExercisePage());
