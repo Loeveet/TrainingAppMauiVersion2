@@ -70,11 +70,11 @@ namespace TrainingAppMauiVersion2.ViewModels
             Muscles = new ObservableCollection<string>();
             DifficultyLevels = new ObservableCollection<string>();
             TypesOfExercices = new ObservableCollection<string>();
-            //AddMuscles();
+            AddMuscles();
             AddDifficultyLevels();
             AddTypesOfExercices();
         }
-        public void AddMuscles()
+        private void AddMuscles()
         {
             var muscleArray = HelperMethods.CapitalizeFirstLetterInArray(Exercise.muscles);
             foreach (var m in muscleArray)
