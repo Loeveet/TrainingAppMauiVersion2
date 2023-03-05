@@ -15,8 +15,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid 
-                                    Padding="5"
-                                    RowDefinitions="auto, auto, auto, auto, *">
+                                    Padding="5">
 
                                     <Frame 
                                         BorderColor="DimGrey">
@@ -24,22 +23,6 @@
                                         Text="{Binding Name}"
                                         FontSize="20"/>
                                     </Frame>
-                                    <!--<Label
-                                        Text="{Binding Difficulty, StringFormat='Difficultness: {0}'}"
-                                        Grid.Row="1"
-                                        FontSize="15"/>
-                                    <Label
-                                        Text="{Binding Type, StringFormat='Type of training: {0}'}"
-                                        Grid.Row="2"
-                                        FontSize="15"/>
-                                    <Label
-                                        Text="{Binding Equipment, StringFormat='Equpments: {0}'}"
-                                        Grid.Row="3"
-                                        FontSize="15"/>
-                                    <Label
-                                        Text="{Binding Instructions, StringFormat='Instructions: {0}'}"
-                                        Grid.Row="4"
-                                        FontSize="15"/>-->
 
                                 </Grid>
                             </ViewCell>
