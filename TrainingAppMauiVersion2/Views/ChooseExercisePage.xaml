@@ -9,7 +9,8 @@
     <VerticalStackLayout>
             <VerticalStackLayout>
                 <ListView
-                 ItemsSource="{Binding Exercises}">
+                 ItemsSource="{Binding Exercises}"
+                    ItemSelected="AddExerciseToList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -17,12 +18,13 @@
                                     Padding="5"
                                     RowDefinitions="auto, auto, auto, auto, *">
 
-                                    <Label
-                                        Text="{Binding Name, StringFormat='Name: {0}' }"
-                                        FontSize="20"
-                                        BackgroundColor="Beige"/>
-
-                                    <Label
+                                    <Frame 
+                                        BorderColor="DimGrey">
+                                        <Label
+                                        Text="{Binding Name}"
+                                        FontSize="20"/>
+                                    </Frame>
+                                    <!--<Label
                                         Text="{Binding Difficulty, StringFormat='Difficultness: {0}'}"
                                         Grid.Row="1"
                                         FontSize="15"/>
@@ -37,7 +39,7 @@
                                     <Label
                                         Text="{Binding Instructions, StringFormat='Instructions: {0}'}"
                                         Grid.Row="4"
-                                        FontSize="15"/>
+                                        FontSize="15"/>-->
 
                                 </Grid>
                             </ViewCell>
