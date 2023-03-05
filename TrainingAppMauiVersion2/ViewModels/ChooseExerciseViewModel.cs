@@ -45,7 +45,13 @@ namespace TrainingAppMauiVersion2.ViewModels
         public async void GetTheExercises()
         {
             var exercises = await Connections.Connection.GetExercices();
-            Exercises = exercises;
+            if (exercises is not null)
+            {
+                Exercises = exercises;
+                return;
+            }
+            await App.Current.MainPage.DisplayAlert("To bad", "Your choises didn't match any exercises", "Try again");
+
         }
 
 

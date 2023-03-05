@@ -8,7 +8,6 @@ namespace TrainingAppMauiVersion2;
 
 public partial class MainPage : ContentPage
 {
-    //TODO: Skapa en sträng av inparametrarna så jag kan få fram rätt övningar
     //TODO: I första hand lägga till övningar i en lista
     //TODO: I andra hand lägga till vikt och repetioner per övning och spara det i ett exerciseset för att sedan läggas till i trainingprogram
     //TODO: Skriva ut personliga träningsprogram

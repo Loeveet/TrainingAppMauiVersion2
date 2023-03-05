@@ -9,10 +9,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.SessionData;
+using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.Connections
 {
-    internal static class Connection
+    internal class Connection
     {
 
         public static IMongoCollection<Person> UserCollection()
@@ -37,12 +38,15 @@ namespace TrainingAppMauiVersion2.Connections
 
         public static async Task<ObservableCollection<Exercise>> GetExercices()
         {
+            ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
+
             var client = new HttpClient();
             client.BaseAddress = new Uri("https://api.api-ninjas.com");
             client.DefaultRequestHeaders.Add("X-Api-Key", "4DGnPLCofmkfjBtzIHc4Z55iv07P2Aw6vV57v5SP");
             ObservableCollection<Exercise> exercises = null;
-            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + SiteVariables.ChosenMuscle);
-            //+ (SiteVariables.ChosenDifficultness != string.Empty ? "&difficulty=" + SiteVariables.ChosenDifficultness : string.Empty));
+            HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + chosenItem.GetChosenMuscle()
+            + (chosenItem.GetChosenDifficulty() != string.Empty ? "&difficulty=" + chosenItem.GetChosenDifficulty() : string.Empty)
+            + (chosenItem.GetChosenTypeOfExercise() != string.Empty ? "&difficulty=" + chosenItem.GetChosenTypeOfExercise() : string.Empty));
             if (response.IsSuccessStatusCode)
             {
                 string responseString = await response.Content.ReadAsStringAsync();

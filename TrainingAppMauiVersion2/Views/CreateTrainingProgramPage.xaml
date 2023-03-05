@@ -108,7 +108,8 @@
             <Button
                 Grid.Row="3"
                 Grid.ColumnSpan="3"               
-                Text="Forward"/>
+                Text="Forward"
+                Clicked="OnClickedChooseExercise"/>
             <Button
                 Grid.Row="4"
                 Grid.ColumnSpan="3"               
