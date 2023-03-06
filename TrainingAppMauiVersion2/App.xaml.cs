@@ -9,6 +9,6 @@ public partial class App : Application
 		InitializeComponent();
 
 		//MainPage = new AppShell();
-		MainPage = new NavigationPage(new MainPage());
+		MainPage = new NavigationPage(new MainPage()); // TODO: så att jag kan ta bort bakåtknappen. skapa egna överallt
 	}
 }
