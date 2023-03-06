@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrainingAppMauiVersion2.Views.ExerciseDetailsPage"
-             Title="{Binding Name}">
+             Title="{Binding Name}"
+             NavigationPage.HasBackButton="False">
     <ScrollView>
         <Grid 
             ColumnDefinitions="200, 200"
-            RowDefinitions="auto, auto, auto, auto, auto, 50">
+            RowDefinitions="auto, auto, auto, auto, auto, auto, auto">
 
             <Label
             Grid.ColumnSpan="2"
@@ -45,6 +46,11 @@
             Grid.ColumnSpan="2"
             Text="Create set and add to training program"
             Clicked="CreateSet"/>
+            <Button
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                Text="Back"
+                Clicked="OnClickedBack"/>
         </Grid>
     </ScrollView>
 </ContentPage>

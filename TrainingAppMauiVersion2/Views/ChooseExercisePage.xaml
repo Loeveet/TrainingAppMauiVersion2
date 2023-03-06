@@ -4,32 +4,34 @@
              x:Class="TrainingAppMauiVersion2.Views.ChooseExercisePage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ChooseExerciseViewModel"
-             Title="ChooseExercisePage">
-        <ScrollView>
-    <VerticalStackLayout>
-            <VerticalStackLayout>
-                <ListView
+             Title="ChooseExercisePage"
+             NavigationPage.HasBackButton="False">
+    <ScrollView>
+        <VerticalStackLayout>
+            <ListView
                  ItemsSource="{Binding Exercises}"
                     ItemSelected="AddExerciseToList">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid 
                                     Padding="5">
 
-                                    <Frame 
+                                <Frame 
                                         BorderColor="DimGrey">
-                                        <Label
+                                    <Label
                                         Text="{Binding Name}"
                                         FontSize="20"/>
-                                    </Frame>
+                                </Frame>
 
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </VerticalStackLayout>
-    </VerticalStackLayout>
-        </ScrollView>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Text="Back"
+                Clicked="OnBackClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -5,7 +5,8 @@
              x:Class="TrainingAppMauiVersion2.Views.CreateTrainingProgramPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:CreateTrainingProgramViewModel"
-             Title="CreateTrainingProgramPage">
+             Title="CreateTrainingProgramPage"
+             NavigationPage.HasBackButton="False">
     <ScrollView
         Orientation="Both">
         <Grid
@@ -178,7 +179,8 @@
             <Button
                 Grid.Row="5"
                 Grid.ColumnSpan="6"               
-                Text="Back"/>
+                Text="Back"
+                Clicked="OnBackClicked"/>
         </Grid>
 
     </ScrollView>

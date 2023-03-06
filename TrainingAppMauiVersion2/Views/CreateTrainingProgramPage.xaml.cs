@@ -6,7 +6,7 @@ namespace TrainingAppMauiVersion2.Views;
 
 public partial class CreateTrainingProgramPage : ContentPage
 {
-
+    ChosenParameters chosenParameters = ChosenParameters.GetInstansOfChosenParameters();
     public CreateTrainingProgramPage()
 	{
 		InitializeComponent();
@@ -24,4 +24,11 @@ public partial class CreateTrainingProgramPage : ContentPage
 
     }
 
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        chosenParameters.SetChosenMuscle(string.Empty);
+        chosenParameters.SetChosenDifficulty(string.Empty);
+        chosenParameters.SetChosenTypeOfExercise(string.Empty);
+        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+    }
 }

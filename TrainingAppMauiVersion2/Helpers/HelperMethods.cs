@@ -29,6 +29,7 @@ namespace TrainingAppMauiVersion2.NewFolder
         }
         public static string FixWordsForApi(string word)
         {
+            if (word == "" || word == null) return "All";
             string newWord = word.ToLower().Replace(' ', '_');
             return newWord;
         }

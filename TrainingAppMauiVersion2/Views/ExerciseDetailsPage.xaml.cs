@@ -10,6 +10,7 @@ public partial class ExerciseDetailsPage : ContentPage
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
     NewTrainingProgram newTrainingprogram = NewTrainingProgram.GetInstansOfListOfSets();
+    ChosenParameters chosenParameters = ChosenParameters.GetInstansOfChosenParameters();
     Person user;
     public ExerciseDetailsPage()
     {
@@ -59,5 +60,10 @@ public partial class ExerciseDetailsPage : ContentPage
         //    .AsQueryable()
         //    .Where(x => x.Person.Id == user.Id);
 
+    }
+
+    private async void OnClickedBack(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
     }
 }
