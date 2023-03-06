@@ -62,6 +62,8 @@ public partial class ExerciseDetailsPage : ContentPage
     }
     private void AddSetToProgram(ExerciseSet exerciseSet)
     {
+        //TODO: lägga till antingen i en lista för att sen när man är klar skapa träningsprogrammet
+        // eller någonstans tidigare i processen skapa ett program där man lägger till seten
         var trainingPrograms = Connections.Connection.TrainingProgramCollection();
         var usersProgram = trainingPrograms
             .AsQueryable()
