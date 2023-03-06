@@ -7,7 +7,7 @@
     <ScrollView>
         <Grid 
             ColumnDefinitions="200, 200"
-            RowDefinitions="auto, auto, auto, auto, auto, auto, auto">
+            RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto">
 
             <Label
             Grid.ColumnSpan="2"
@@ -46,8 +46,13 @@
             Grid.ColumnSpan="2"
             Text="Create set and add to training program"
             Clicked="CreateSet"/>
+        <Button
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Text="Create program"
+            Clicked="AddProgramToUser"/>
             <Button
-                Grid.Row="6"
+                Grid.Row="7"
                 Grid.ColumnSpan="2"
                 Text="Back"
                 Clicked="OnClickedBack"/>

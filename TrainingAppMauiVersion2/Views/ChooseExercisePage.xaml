@@ -10,15 +10,15 @@
         <VerticalStackLayout>
             <ListView
                  ItemsSource="{Binding Exercises}"
-                    ItemSelected="AddExerciseToList">
+                 ItemSelected="AddExerciseToList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid 
-                                    Padding="5">
+                               Padding="5">
 
                                 <Frame 
-                                        BorderColor="DimGrey">
+                                   BorderColor="DimGrey">
                                     <Label
                                         Text="{Binding Name}"
                                         FontSize="20"/>

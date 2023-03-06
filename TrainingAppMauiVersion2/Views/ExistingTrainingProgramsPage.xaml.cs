@@ -6,6 +6,7 @@ namespace TrainingAppMauiVersion2.Views;
 public partial class ExistingTrainingProgramsPage : ContentPage
 {
     LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+    ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
 	public ExistingTrainingProgramsPage()
 	{
 		InitializeComponent();
@@ -25,6 +26,7 @@ public partial class ExistingTrainingProgramsPage : ContentPage
     {
         if (((ListView)sender).SelectedItem is TrainingProgram trainingProgram)
         {
+            chosenTrainingProgram.SetChosenTrainingProgram(trainingProgram);
             var page = new SeeExercisesInProgramPage();
             page.BindingContext = trainingProgram;
             await Navigation.PushAsync(page);
