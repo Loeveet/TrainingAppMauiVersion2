@@ -6,7 +6,8 @@
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:RegisterPageViewModel"
              Title="RegisterPage">
-    <ScrollView>
+    <ScrollView
+        Orientation="Both">
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
@@ -30,6 +31,10 @@
             <Entry
                 Text="{Binding Name}"
                 Placeholder="Name"/>
+            
+            <Entry
+                Text="{Binding Weight}"
+                Placeholder="Weight"/>
 
             <!--<Entry
                 Text="{Binding BirthDate}"

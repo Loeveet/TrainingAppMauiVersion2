@@ -31,11 +31,6 @@ namespace TrainingAppMauiVersion2.ViewModels
         [RelayCommand]
         public async void OnClickedRegisterButton()
         {
-            //var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
-            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-            //var client = new MongoClient(settings);
-            //var database = client.GetDatabase("TrainingAppPerson");
-            //var myCollection = database.GetCollection<Person>("MyUsers");
             var myCollection = Connections.Connection.UserCollection();
             //Skapa en knapp för att registera personen om alla inmatningar är korrekta
             //och sen gå tillbaka till mainpage, för att logga in med valda parametrar
@@ -47,9 +42,9 @@ namespace TrainingAppMauiVersion2.ViewModels
                     UserName = UserName,
                     PassWord = PassWord,
                     Name = Name,
-                    Programs = new List<TrainingProgram>() 
+                    Programs = new List<TrainingProgram>(),
                     //Birthday = Convert.ToDateTime(BirthDate),
-                    //Weight = Convert.ToInt32(Weight),
+                    Weight = Convert.ToInt32(Weight)
                     //Height = Convert.ToInt32(Height),
                     //Email = Email
                 };

@@ -11,6 +11,10 @@
             Text="{Binding User.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding TrainingPrograms.Count, StringFormat='Number of personal training programs: {0}'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
         <VerticalStackLayout>
             <ListView
                  ItemsSource="{Binding TrainingPrograms}">
@@ -33,5 +37,11 @@
                 </ListView.ItemTemplate>
             </ListView>
         </VerticalStackLayout>
+        <Button
+                Text="Existing training programs"
+                Clicked="OnClickedExistingTrainingProgramsPage"/>
+        <Button
+                Text="Create training programs"
+                Clicked="OnClickedCreateTrainingProgramPage"/>
     </VerticalStackLayout>
 </ContentPage>

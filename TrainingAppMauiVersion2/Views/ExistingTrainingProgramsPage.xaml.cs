@@ -7,4 +7,13 @@ public partial class ExistingTrainingProgramsPage : ContentPage
 		InitializeComponent();
         BindingContext = new ViewModels.ExistingTrainingProgramsViewModel();
     }
+    private async void OnClickedExistingTrainingProgramsPage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+    }
+
+    private async void OnClickedCreateTrainingProgramPage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CreateTrainingProgramPage());
+    }
 }

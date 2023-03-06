@@ -48,7 +48,7 @@ public partial class MainPage : ContentPage
         if (_loginFacade.CanLogIn(UserName.Text, PassWord.Text))  //Facade för inlogg
         {
             await DisplayAlert("Success", "Welcome " + loggedInUser.GetLoggedInPerson().Name, "Continue");
-            await Navigation.PushAsync(new Views.LoggedInPage());
+            await Navigation.PushAsync(new Views.ExistingTrainingProgramsPage());
             UserName.Text = string.Empty;
             PassWord.Text = string.Empty;
             return;

@@ -26,6 +26,9 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         string name;
 
+        [ObservableProperty]
+        string burnedCalories;
+
 
         public ExistingTrainingProgramsViewModel()
         {

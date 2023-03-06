@@ -6,14 +6,15 @@
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:CreateTrainingProgramViewModel"
              Title="CreateTrainingProgramPage">
-    <ScrollView>
+    <ScrollView
+        Orientation="Both">
         <Grid
             ColumnDefinitions="200, 200, 200"
             RowDefinitions="50, 50, auto, auto, *">
             <Label
                 VerticalOptions="Center"
                 FontSize="20"
-                Text="{Binding Person.Programs.Count}"/>
+                Text="New training program"/>
             <Label
                 Text="{Binding ChosenMuscle}"
                 Grid.Row="1"
