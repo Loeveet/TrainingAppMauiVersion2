@@ -67,12 +67,12 @@
                             Margin="3">
                             
                             <Button
-                            BorderWidth="1"
-                            BackgroundColor="White"
-                            FontSize="10"
-                            TextColor="Black"
-                            BorderColor="Black"
-                            Text="{Binding .}"
+                                BorderWidth="1"
+                                BackgroundColor="White"
+                                FontSize="10"
+                                TextColor="Black"
+                                BorderColor="Black"
+                                Text="{Binding .}"
                                 Command="{Binding Source={RelativeSource 
                                 AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                 Path=ChooseDifficultyCommand}"
@@ -91,12 +91,12 @@
                         <Grid
                             Margin="3">
                             <Button
-                            BackgroundColor="White"
-                            FontSize="10"
-
-                            TextColor="Black"
-                            BorderColor="Black"
-                            Text="{Binding .}"
+                                BorderWidth="1"
+                                BackgroundColor="White"
+                                FontSize="10"
+                                TextColor="Black"
+                                BorderColor="Black"
+                                Text="{Binding .}"
                                 Command="{Binding Source={RelativeSource 
                                 AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                 Path=ChooseTypeCommand}"

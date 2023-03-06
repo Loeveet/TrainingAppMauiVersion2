@@ -11,7 +11,6 @@ namespace TrainingAppMauiVersion2.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Person Person { get; set; }
-        //public List<ExerciseSet> ExerciseSets { get; set; }
         public List<ExerciseSet> Exercises { get; set; }
     }
 }
