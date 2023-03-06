@@ -6,6 +6,8 @@ namespace TrainingAppMauiVersion2.Views;
 public partial class ChooseExercisePage : ContentPage
 {
     LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+    ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
+
     public ChooseExercisePage()
 	{
 		InitializeComponent();
@@ -14,10 +16,9 @@ public partial class ChooseExercisePage : ContentPage
     }
     private async void AddExerciseToList(object sender, SelectedItemChangedEventArgs e)
     {
-        var exercise = ((ListView)sender).SelectedItem as Models.Exercise;
-
-        if (exercise != null)
+        if (((ListView)sender).SelectedItem is Exercise exercise)
         {
+            chosenExercise.SetChosenExercise(exercise);
             var page = new ExerciseDetailsPage();
             page.BindingContext = exercise;
             await Navigation.PushAsync(page);

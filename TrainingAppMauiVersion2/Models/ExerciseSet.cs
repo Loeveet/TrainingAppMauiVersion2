@@ -9,8 +9,8 @@ namespace TrainingAppMauiVersion2.Models
     internal class ExerciseSet
     {
         public Exercise Exercise { get; set; }
-        public double ChoosenWeight { get; set; } = 0;
-        public int Repetitions { get; set; } = 0;
+        public int ChoosenWeight { get; set; }
+        public int Repetitions { get; set; }
         public double Duration { get; set; }
         public double CaloriesBurned { get; set; } // Räkna ut hur långt ett set blir. använd sedan formeln.
 

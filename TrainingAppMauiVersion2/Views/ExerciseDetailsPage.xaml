@@ -7,36 +7,44 @@
         <Grid 
             ColumnDefinitions="200, 200"
             RowDefinitions="auto, auto, auto, auto, auto, *">
-        <Label
+
+            <Label
             Grid.ColumnSpan="2"
             Text="{Binding Difficulty, StringFormat='Difficultness: {0}'}"
             FontSize="20"/>
-        <Label
+
+            <Label
             Grid.Row="1"
             Grid.ColumnSpan="2"
             Text="{Binding Type, StringFormat='Type of training: {0}'}"
             FontSize="20"/>
-        <Label
+
+            <Label
             Grid.Row="2"
             Grid.ColumnSpan="2"
             Text="{Binding Equipment, StringFormat='Equpments: {0}'}"
             FontSize="20"/>
-        <Label
+
+
+            <Label
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Text="{Binding Instructions, StringFormat='Instructions: {0}'}"
             FontSize="20"/>
-        <Entry
+            <Entry
+                x:Name="Ws"
             Grid.Row="4"
             Placeholder="Weights"/>
-        <Entry
+            <Entry
+                x:Name="Reps"
             Grid.Row="4"
             Grid.Column="1"
             Placeholder="Nr of repetitions"/>
             <Button
             Grid.Row="5"
             Grid.ColumnSpan="2"
-            Text="Create set and add to training program"/>
+            Text="Create set and add to training program"
+            Clicked="CreateSet"/>
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -41,10 +41,16 @@ namespace TrainingAppMauiVersion2.NewFolder
         public static int TryParseToInt(string input)
         {
             int id;
-            while (!int.TryParse(input, out id))
+            //while (!int.TryParse(input, out id))
+            //{
+            //    await App.Current.MainPage.DisplayAlert("Failed", "Use numbers", "Try again");
+            //    input = Console.ReadLine();
+            //}
+            //return id;
+
+            if (!int.TryParse(input, out id))
             {
-                Console.WriteLine("Wrong input, try again");
-                input = Console.ReadLine();
+                App.Current.MainPage.DisplayAlert("Failed", "Use numbers", "Try again");
             }
             return id;
         }
