@@ -8,35 +8,6 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <CollectionView
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Grid.Row="2"
-                ItemsSource="{Binding Muscles}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid
-                            Margin="3">
-                        <Label
-                                Grid.Column="0"
-                                Text="{Binding .}"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                TextColor="Black"/>
-                        <Button
-                                Opacity="0"
-                                BorderColor="White"
-                                BackgroundColor="White"
-                                BorderWidth="1"
-                                Grid.Column="1"
-                                Command="{Binding Source={RelativeSource 
-                                AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}},
-                                Path=ChooseMuscleCommand}"
-                                CommandParameter="{Binding .}"
-                                Clicked="ReloadPage"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        
     </VerticalStackLayout>
 </ContentPage>
