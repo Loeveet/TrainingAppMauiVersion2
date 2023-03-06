@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.NewFolder;
 using TrainingAppMauiVersion2.SessionData;
@@ -115,7 +116,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             TrainingProgram program = new()
             {
                 Id = new Guid(),
-                Person = Person,
+                Person = user,
                 Name = Name,
                 Exercises = new List<ExerciseSet>()
 
@@ -127,6 +128,11 @@ namespace TrainingAppMauiVersion2.ViewModels
 
 
         }
+
+        
+
+
+
         private static async Task SaveProgram(TrainingProgram program, IMongoCollection<TrainingProgram> myTrainingPrograms)
         {
             await myTrainingPrograms.InsertOneAsync(program);

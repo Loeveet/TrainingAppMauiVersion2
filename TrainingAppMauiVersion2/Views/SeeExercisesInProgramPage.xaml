@@ -8,29 +8,9 @@
              NavigationPage.HasBackButton="False">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding TrainingProgram.Name}"
+            Text="}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <ListView
-                 ItemsSource="{Binding TrainingProgram.Exercises}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid 
-                            Padding="5">
-
-                            <Frame 
-                                BorderColor="DimGrey">
-                                <Label
-                                    Text="{Binding TrainingProgram.Exercises}"
-                                    FontSize="20"/>
-                            </Frame>
-
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
 
         <Button
             Text="Back"
