@@ -16,7 +16,7 @@ namespace TrainingAppMauiVersion2.Connections
     internal class Connection
     {
 
-        public static IMongoCollection<Person> UserCollection()
+        public static async Task<IMongoCollection<Person>> UserCollection()
         {
             var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
@@ -26,7 +26,7 @@ namespace TrainingAppMauiVersion2.Connections
             return myUsers;
         }
 
-        public static IMongoCollection<TrainingProgram> TrainingProgramCollection()
+        public static async Task<IMongoCollection<TrainingProgram>> TrainingProgramCollection()
         {
             var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RobinLiliegren:robin88@cluster0.cst2dyy.mongodb.net/?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
@@ -46,7 +46,7 @@ namespace TrainingAppMauiVersion2.Connections
             ObservableCollection<Exercise> exercises = null;
             HttpResponseMessage response = await client.GetAsync("/v1/exercises?muscle=" + chosenItem.GetChosenMuscle()
             + (chosenItem.GetChosenDifficulty() != string.Empty ? "&difficulty=" + chosenItem.GetChosenDifficulty() : string.Empty)
-            + (chosenItem.GetChosenTypeOfExercise() != string.Empty ? "&difficulty=" + chosenItem.GetChosenTypeOfExercise() : string.Empty));
+            + (chosenItem.GetChosenTypeOfExercise() != string.Empty ? "&type=" + chosenItem.GetChosenTypeOfExercise() : string.Empty));
             if (response.IsSuccessStatusCode)
             {
                 string responseString = await response.Content.ReadAsStringAsync();

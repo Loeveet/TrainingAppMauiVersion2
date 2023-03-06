@@ -6,7 +6,7 @@
     <ScrollView>
         <Grid 
             ColumnDefinitions="200, 200"
-            RowDefinitions="auto, auto, auto, auto, auto, *">
+            RowDefinitions="auto, auto, auto, auto, auto, 50">
 
             <Label
             Grid.ColumnSpan="2"

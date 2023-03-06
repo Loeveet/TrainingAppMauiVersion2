@@ -30,7 +30,6 @@ namespace TrainingAppMauiVersion2.NewFolder
         public static string FixWordsForApi(string word)
         {
             string newWord = word.ToLower().Replace(' ', '_');
-            //string fixedWord = char.ToLower(word[0]) + word.Substring(1).Replace(' ', '_'); //TODO: avvakta för att ta bort om den andra inte strular
             return newWord;
         }
         public static double ConvertKgToPounds(double kg)
@@ -41,16 +40,10 @@ namespace TrainingAppMauiVersion2.NewFolder
         public static int TryParseToInt(string input)
         {
             int id;
-            //while (!int.TryParse(input, out id))
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Failed", "Use numbers", "Try again");
-            //    input = Console.ReadLine();
-            //}
-            //return id;
 
             if (!int.TryParse(input, out id))
             {
-                App.Current.MainPage.DisplayAlert("Failed", "Use numbers", "Try again");
+                App.Current.MainPage.DisplayAlert("Failed", "Use numbers while input a number", "Try again");
             }
             return id;
         }

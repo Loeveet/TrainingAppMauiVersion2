@@ -17,7 +17,8 @@
             HorizontalOptions="Center" />
         <VerticalStackLayout>
             <ListView
-                 ItemsSource="{Binding TrainingPrograms}">
+                 ItemsSource="{Binding TrainingPrograms}"
+                ItemSelected="SeeExercisesInProgram">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

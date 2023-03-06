@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
-
+using TrainingAppMauiVersion2.NewFolder;
 
 namespace TrainingAppMauiVersion2.ViewModels
 {
@@ -31,39 +31,43 @@ namespace TrainingAppMauiVersion2.ViewModels
         [RelayCommand]
         public async void OnClickedRegisterButton()
         {
-            var myCollection = Connections.Connection.UserCollection();
+            var myCollection = await Connections.Connection.UserCollection();
             //Skapa en knapp för att registera personen om alla inmatningar är korrekta
             //och sen gå tillbaka till mainpage, för att logga in med valda parametrar
-            try
+
+
+            Person person = new Person()
             {
-                Person person = new Person()
-                {
-                    Id = new Guid(),
-                    UserName = UserName,
-                    PassWord = PassWord,
-                    Name = Name,
-                    Programs = new List<TrainingProgram>(),
-                    //Birthday = Convert.ToDateTime(BirthDate),
-                    Weight = Convert.ToInt32(Weight)
-                    //Height = Convert.ToInt32(Height),
-                    //Email = Email
-                };
-                Task savePerson = SaveUser(person, myCollection);
+                Id = new Guid(),
+                UserName = UserName,
+                PassWord = PassWord,
+                Name = Name,
+                Programs = new List<TrainingProgram>(),
+                //Birthday = Convert.ToDateTime(BirthDate),
+                Weight = HelperMethods.TryParseToInt(Weight)
+                //Height = Convert.ToInt32(Height),
+                //Email = Email
+            };
+            Task savePerson = SaveUser(person, myCollection);
+            if (SaveUser(person, myCollection).IsCompletedSuccessfully)
+            {
                 await savePerson;
                 await App.Current.MainPage.DisplayAlert("Success", "You are now registred as a new user", "Continue");
                 UserName = string.Empty;
                 PassWord = string.Empty;
                 Name = string.Empty;
-                //BirthDate = string.Empty;
-                //Weight = string.Empty;
-                //Height = string.Empty;
-                //Email = string.Empty;
+                Weight = string.Empty;
             }
-            catch 
-            {
-                await App.Current.MainPage.DisplayAlert("Failed", "Some field is incorrect", "Try again");
+            //BirthDate = string.Empty;
 
-            }
+            //Height = string.Empty;
+            //Email = string.Empty;
+            //else
+            //{
+            //    await App.Current.MainPage.DisplayAlert("Failed", "Some field is incorrect", "Try again");
+            //}
+
+
         }
         private static async Task SaveUser(Person person, IMongoCollection<Person> myCollection)
         {

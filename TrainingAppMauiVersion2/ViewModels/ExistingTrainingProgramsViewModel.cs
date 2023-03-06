@@ -37,9 +37,9 @@ namespace TrainingAppMauiVersion2.ViewModels
             GetPrograms();
         }
 
-        public void GetPrograms()
+        public async void GetPrograms()
         {
-            var allTrainingPrograms = Connections.Connection.TrainingProgramCollection();
+            var allTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
             var usersTrainingProgram = allTrainingPrograms
                 .AsQueryable()
                 .Where(x => x.Person.Id == User.Id);

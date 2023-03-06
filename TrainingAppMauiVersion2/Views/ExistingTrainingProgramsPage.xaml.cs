@@ -1,3 +1,6 @@
+using TrainingAppMauiVersion2.Models;
+using TrainingAppMauiVersion2.Singletons;
+
 namespace TrainingAppMauiVersion2.Views;
 
 public partial class ExistingTrainingProgramsPage : ContentPage
@@ -15,5 +18,15 @@ public partial class ExistingTrainingProgramsPage : ContentPage
     private async void OnClickedCreateTrainingProgramPage(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CreateTrainingProgramPage());
+    }
+
+    private async void SeeExercisesInProgram(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (((ListView)sender).SelectedItem is TrainingProgram trainingProgram)
+        {
+            var page = new SeeExercisesInProgramPage();
+            page.BindingContext = trainingProgram;
+            await Navigation.PushAsync(page);
+        }
     }
 }

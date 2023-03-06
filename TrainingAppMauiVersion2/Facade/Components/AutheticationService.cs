@@ -17,7 +17,7 @@ namespace TrainingAppMauiVersion2.Components
         {
             var users = Connections.Connection.UserCollection();
 
-            foreach (var user in users.AsQueryable().ToList())
+            foreach (var user in users.Result.AsQueryable().ToList())
             {
                 if (user.UserName == userName && user.PassWord == passWord)
                 {

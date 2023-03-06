@@ -9,45 +9,61 @@
     <ScrollView
         Orientation="Both">
         <Grid
-            ColumnDefinitions="200, 200, 200"
-            RowDefinitions="50, 50, auto, auto, *">
+            ColumnDefinitions="150, 50, 150, 50, 150, 50"
+            RowDefinitions="50, auto, auto, auto, auto, *">
             <Label
+                Grid.ColumnSpan="6"
                 VerticalOptions="Center"
                 FontSize="20"
                 Text="New training program"/>
             <Label
                 Text="{Binding ChosenMuscle}"
+                FontSize="20"
+                FontAttributes="Bold"
                 Grid.Row="1"
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
             <Label
                 Text="{Binding ChosenDifficulty}"
+                FontSize="20"
+                FontAttributes="Bold"
                 Grid.Row="1"
-                Grid.Column="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
             <Label
                 Text="{Binding ChosenType}"
+                FontSize="20"
+                FontAttributes="Bold"
                 Grid.Row="1"
-                Grid.Column="2"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
             <CollectionView
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Grid.Row="2"
                 ItemsSource="{Binding Muscles}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
                             Margin="3">
-                            <Button
+                            <Label
+                                Grid.Column="0"
                                 Text="{Binding .}"
-                                FontSize="10"
+                                FontSize="16"
+                                HorizontalOptions="Center"
+                                TextColor="Black"/>
+                            <Button
+                                Opacity="0"
+                                BorderColor="White"
                                 BackgroundColor="White"
-                                TextColor="Black"
-                                BorderColor="Black"
                                 BorderWidth="1"
+                                Grid.Column="1"
                                 Command="{Binding Source={RelativeSource 
                                 AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                 Path=ChooseMuscleCommand}"
@@ -58,21 +74,26 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <CollectionView
-                Grid.Column="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
                 Grid.Row="2"
                 ItemsSource="{Binding DifficultyLevels}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
                             Margin="3">
-                            
-                            <Button
-                                BorderWidth="1"
-                                BackgroundColor="White"
-                                FontSize="10"
-                                TextColor="Black"
-                                BorderColor="Black"
+                            <Label
+                                Grid.Column="0"
                                 Text="{Binding .}"
+                                FontSize="16"
+                                HorizontalOptions="Center"
+                                BackgroundColor="White"
+                                TextColor="Black"/>
+                            <Button
+                                Opacity="0"
+                                BorderColor="White"
+                                BorderWidth="1"
+                                Grid.Column="1"
                                 Command="{Binding Source={RelativeSource 
                                 AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
                                 Path=ChooseDifficultyCommand}"
@@ -83,19 +104,26 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <CollectionView
-                Grid.Column="2"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
                 Grid.Row="2"                
                 ItemsSource="{Binding TypesOfExercices}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
                             Margin="3">
-                            <Button
-                                BorderWidth="1"
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding .}"
+                                FontSize="16"
+                                HorizontalOptions="Center"
                                 BackgroundColor="White"
-                                FontSize="10"
-                                TextColor="Black"
-                                BorderColor="Black"
+                                TextColor="Black"/>
+                            <Button
+                                Opacity="0"
+                                BorderColor="White"
+                                BorderWidth="1"
+                                Grid.Column="1"
                                 Text="{Binding .}"
                                 Command="{Binding Source={RelativeSource 
                                 AncestorType={x:Type viewmodel:CreateTrainingProgramViewModel}}, 
@@ -107,13 +135,49 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button
+                FontAttributes="Bold"
+                FontSize="16"
                 Grid.Row="3"
-                Grid.ColumnSpan="3"               
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BorderWidth="0"
+                TextColor="Black"
+                BackgroundColor="White"
+                Text="Choose all"
+                Command="{Binding ChooseMuscleCommand}"
+                Clicked="ReloadPage"/>
+            <Button
+                FontAttributes="Bold"
+                FontSize="16"                
+                Grid.Row="3"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"  
+                BorderWidth="0"
+                TextColor="Black"
+                BackgroundColor="White"                
+                Text="Choose all"
+                Command="{Binding ChooseDifficultyCommand}"
+                Clicked="ReloadPage"/>
+            <Button
+                FontAttributes="Bold"
+                FontSize="16"                
+                Grid.Row="3"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"     
+                BorderWidth="0"
+                TextColor="Black"
+                BackgroundColor="White"                
+                Text="Choose all"
+                Command="{Binding ChooseTypeCommand}"
+                Clicked="ReloadPage"/>
+            <Button
+                Grid.Row="4"
+                Grid.ColumnSpan="6"               
                 Text="Forward"
                 Clicked="OnClickedChooseExercise"/>
             <Button
-                Grid.Row="4"
-                Grid.ColumnSpan="3"               
+                Grid.Row="5"
+                Grid.ColumnSpan="6"               
                 Text="Back"/>
         </Grid>
 

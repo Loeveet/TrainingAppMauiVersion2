@@ -24,8 +24,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
 
-        [ObservableProperty]
-        TrainingProgram newTrainingProgram;
+        NewTrainingProgram listOfSets = NewTrainingProgram.GetInstansOfListOfSets();
 
         [ObservableProperty]
         Person person;
@@ -62,11 +61,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         string chosenType;
         public CreateTrainingProgramViewModel()
         {
-            NewTrainingProgram = new TrainingProgram()
-            {
-                Exercises = new List<ExerciseSet>(),
-                Person = user.GetLoggedInPerson(),
-            };
+
             Person = user.GetLoggedInPerson();
             ChosenMuscle = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenMuscle());
             ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenDifficulty());
@@ -110,8 +105,8 @@ namespace TrainingAppMauiVersion2.ViewModels
         public async void ClickedGetProgramsButton()
         {
 
-            var myTrainingPrograms = Connections.Connection.TrainingProgramCollection();
-            var users = Connections.Connection.UserCollection();
+            var myTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
+            var users = await Connections.Connection.UserCollection();
             var user = users
                 .AsQueryable()
                 .SingleOrDefault(x => x.Id == Person.Id);
@@ -140,6 +135,11 @@ namespace TrainingAppMauiVersion2.ViewModels
         [RelayCommand]
         public void ChooseMuscle(string muscle)
         {
+            if (string.IsNullOrWhiteSpace(muscle))
+            {
+                chosenItem.SetChosenMuscle(string.Empty);
+                return;
+            }
             chosenItem.SetChosenMuscle(HelperMethods.FixWordsForApi(muscle));
 
         }
