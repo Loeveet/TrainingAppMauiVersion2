@@ -9,32 +9,17 @@ public partial class ExerciseDetailsPage : ContentPage
 {
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
-    
+    Person user;
     public ExerciseDetailsPage()
     {
         InitializeComponent();
         BindingContext = new ViewModels.ExerciseDetailsViewModel();
-
+        user = loggedInUser.GetLoggedInPerson();
     }
-    //public void CreateSet()
-    //{
-    //    TimeSpan ts = TimeSpan.FromSeconds(Convert.ToInt32(Reps.Text) * 5);
-    //    double metValue = 4.8;
-
-    //    ExerciseSet exerciseSet = new()
-    //    {
-    //        Exer = chosenExercise.GetChosenExercise(),
-    //        ChoosenWeight = Convert.ToInt32(Ws.Text),
-    //        Repetitions = Convert.ToInt32(Reps.Text),
-    //        Duration = ts.TotalMinutes,
-    //        CaloriesBurned = metValue * user.GetLoggedInPerson().Weight * 0.0175 * ts.TotalMinutes
-
-    //    };
-    //}
 
     private void CreateSet(object sender, EventArgs e)
     {
-        Person user = loggedInUser.GetLoggedInPerson();
+        //Person user = loggedInUser.GetLoggedInPerson();
         int nrOfSecondsOfARep = 5;
         double metValue = 4.8;
         int weight = HelperMethods.TryParseToInt(Ws.Text);
@@ -67,7 +52,7 @@ public partial class ExerciseDetailsPage : ContentPage
         var trainingPrograms = Connections.Connection.TrainingProgramCollection();
         var usersProgram = trainingPrograms
             .AsQueryable()
-            .Where(x => x.Person.Id == loggedInUser.GetLoggedInPerson().Id);
+            .Where(x => x.Person.Id == user.Id);
 
         //loggedInUser.GetLoggedInPerson().Programs.
     }

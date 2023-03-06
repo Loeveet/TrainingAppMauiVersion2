@@ -8,8 +8,30 @@
     <VerticalStackLayout>
 
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="{Binding User.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <VerticalStackLayout>
+            <ListView
+                 ItemsSource="{Binding TrainingPrograms}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid 
+                                    Padding="5">
+
+                                <Frame 
+                                        BorderColor="DimGrey">
+                                    <Label
+                                        Text="{Binding Name}"
+                                        FontSize="20"/>
+                                </Frame>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
