@@ -4,7 +4,8 @@
              x:Class="TrainingAppMauiVersion2.Views.ExistingTrainingProgramsPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ExistingTrainingProgramsViewModel"
-             Title="ExistingTrainingProgramsPage">
+             Title="ExistingTrainingProgramsPage"
+             NavigationPage.HasBackButton="False">
     <VerticalStackLayout>
 
         <Label 
@@ -38,9 +39,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </VerticalStackLayout>
-        <Button
-                Text="Existing training programs"
-                Clicked="OnClickedExistingTrainingProgramsPage"/>
         <Button
                 Text="Create training programs"
                 Clicked="OnClickedCreateTrainingProgramPage"/>

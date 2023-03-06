@@ -5,7 +5,8 @@
              x:Class="TrainingAppMauiVersion2.Views.RegisterPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:RegisterPageViewModel"
-             Title="RegisterPage">
+             Title="RegisterPage"
+             NavigationPage.HasBackButton="False">
     <ScrollView
         Orientation="Both">
         <VerticalStackLayout
