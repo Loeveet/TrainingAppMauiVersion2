@@ -4,7 +4,7 @@
              x:Class="TrainingAppMauiVersion2.Views.ExistingTrainingProgramsPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ExistingTrainingProgramsViewModel"
-             Title="ExistingTrainingProgramsPage"
+             Title="{Binding User.Name, StringFormat='Welcome {0}'}"
              NavigationPage.HasBackButton="False">
     <VerticalStackLayout>
 
@@ -42,5 +42,8 @@
         <Button
                 Text="Create training programs"
                 Clicked="OnClickedCreateTrainingProgramPage"/>
+        <Button
+            Text="Log out"
+            Clicked="OnClickedLoggedOut"/>
     </VerticalStackLayout>
 </ContentPage>

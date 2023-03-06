@@ -5,6 +5,7 @@ namespace TrainingAppMauiVersion2.Views;
 
 public partial class ExistingTrainingProgramsPage : ContentPage
 {
+    LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
 	public ExistingTrainingProgramsPage()
 	{
 		InitializeComponent();
@@ -28,5 +29,11 @@ public partial class ExistingTrainingProgramsPage : ContentPage
             page.BindingContext = trainingProgram;
             await Navigation.PushAsync(page);
         }
+    }
+
+    private async void OnClickedLoggedOut(object sender, EventArgs e)
+    {
+        user.SetLoggedInPerson(null);
+        await Navigation.PopToRootAsync();
     }
 }
