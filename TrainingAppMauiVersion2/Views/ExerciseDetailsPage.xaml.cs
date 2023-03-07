@@ -21,7 +21,6 @@ public partial class ExerciseDetailsPage : ContentPage
 
     private void CreateSet(object sender, EventArgs e)
     {
-        //Person user = loggedInUser.GetLoggedInPerson();
         try
         {
             int nrOfSecondsOfARep = 5;
@@ -55,11 +54,6 @@ public partial class ExerciseDetailsPage : ContentPage
     {
         newTrainingProgram.AddSetToList(exerciseSet);
 
-        //var trainingPrograms = await Connections.Connection.TrainingProgramCollection();
-        //var usersProgram = trainingPrograms
-        //    .AsQueryable()
-        //    .Where(x => x.Person.Id == user.Id);
-
     }
     private async void AddProgramToUser(object sender, EventArgs e)
     {
@@ -82,12 +76,6 @@ public partial class ExerciseDetailsPage : ContentPage
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());
     }
 
-
-
-    private static async Task SaveNewProgram(TrainingProgram trainingProgram, IMongoCollection<TrainingProgram> trainingPrograms)
-    {
-        await trainingPrograms.InsertOneAsync(trainingProgram);
-    }
     private async void OnClickedBack(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
