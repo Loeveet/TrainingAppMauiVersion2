@@ -38,12 +38,10 @@ namespace TrainingAppMauiVersion2.Models
         };
         public static readonly string[] typesOfExercices = new[]
         {
-            "cardio",
             "olympic_weightlifting",
             "plyometrics",
             "powerlifting",
             "strength",
-            "stretching",
             "strongman"
         };
         public static readonly string[] muscles = new[]

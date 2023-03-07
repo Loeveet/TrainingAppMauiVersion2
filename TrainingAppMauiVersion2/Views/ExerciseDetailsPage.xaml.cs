@@ -67,7 +67,7 @@ public partial class ExerciseDetailsPage : ContentPage
         TrainingProgram trainingProgram = new TrainingProgram()
         {
             Id = Guid.NewGuid(),
-            Name = "Kom ihåg att man ska skriva namn på sitt program", //TODO: FIX!
+            Name = NewProgramName.Text,
             Exercises = newTrainingProgram.GetListOfSets()
         };
         user.Programs.Add(trainingProgram);    

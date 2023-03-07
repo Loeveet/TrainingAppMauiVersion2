@@ -46,9 +46,13 @@
             Grid.ColumnSpan="2"
             Text="Create set and add to training program"
             Clicked="CreateSet"/>
-        <Button
+            <Entry
+                x:Name="NewProgramName"
+                Grid.Row="6"
+                Placeholder="Enter name for program"/>
+            <Button
             Grid.Row="6"
-            Grid.ColumnSpan="2"
+            Grid.Column="1"
             Text="Create program"
             Clicked="AddProgramToUser"/>
             <Button
