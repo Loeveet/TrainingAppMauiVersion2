@@ -37,16 +37,22 @@ namespace TrainingAppMauiVersion2.ViewModels
             GetPrograms();
         }
 
-        public async void GetPrograms()
+        public void GetPrograms()
         {
-            var allTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
-            var usersTrainingProgram = allTrainingPrograms
-                .AsQueryable()
-                .Where(x => x.Person.Id == User.Id);
-            foreach ( var tp in usersTrainingProgram)
+
+            foreach (var x in User.Programs)
             {
-                TrainingPrograms.Add(tp);
+                TrainingPrograms.Add(x);
             }
+            
+            //var allTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
+            //var usersTrainingProgram = allTrainingPrograms
+            //    .AsQueryable()
+            //    .Where(x => x.Person.Id == User.Id);
+            //foreach ( var tp in usersTrainingProgram)
+            //{
+            //    TrainingPrograms.Add(tp);
+            //}
         }
 
 

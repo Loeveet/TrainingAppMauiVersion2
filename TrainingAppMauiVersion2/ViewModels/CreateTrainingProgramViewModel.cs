@@ -115,8 +115,6 @@ namespace TrainingAppMauiVersion2.ViewModels
 
             TrainingProgram program = new()
             {
-                Id = new Guid(),
-                Person = user,
                 Name = Name,
                 Exercises = new List<ExerciseSet>()
 

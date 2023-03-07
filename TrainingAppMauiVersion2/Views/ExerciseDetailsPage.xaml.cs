@@ -64,26 +64,6 @@ public partial class ExerciseDetailsPage : ContentPage
     private async void AddProgramToUser(object sender, EventArgs e)
     {
 
-        //var myTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
-        //var users = await Connections.Connection.UserCollection();
-        //var user = users
-        //    .AsQueryable()
-        //    .SingleOrDefault(x => x.Id == Person.Id);
-
-
-        //TrainingProgram program = new()
-        //{
-        //    Id = new Guid(),
-        //    UserGuid = user.Id,
-        //    Name = Name,
-        //    Exercises = new List<ExerciseSet>()
-
-        //};
-        //user.Programs.Add(program);
-        //    await SaveProgram(program, myTrainingPrograms);
-        //await users.ReplaceOneAsync(x => x.Id == Person.Id, user);
-        //await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
-
         var trainingPrograms = await Connections.Connection.TrainingProgramCollection();
         var users = await Connections.Connection.UserCollection();
         var person = users
@@ -92,13 +72,12 @@ public partial class ExerciseDetailsPage : ContentPage
 
         TrainingProgram trainingProgram = new TrainingProgram()
         {
-            Id = new Guid(),
+            Id = Guid.NewGuid(),
             Name = "Kom ihåg att man ska skriva namn på sitt program", //TODO: FIX!
-            Person = user,
             Exercises = newTrainingProgram.GetListOfSets()
         };
         user.Programs.Add(trainingProgram);    
-        await SaveNewProgram(trainingProgram, trainingPrograms); // TODO: Något fel här! Lös imorgon
+        //await SaveNewProgram(trainingProgram, trainingPrograms); // TODO: Något fel här! Lös imorgon
         await users.ReplaceOneAsync(x => x.Id == user.Id, user);
         await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());

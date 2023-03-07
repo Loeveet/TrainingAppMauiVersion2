@@ -48,16 +48,17 @@ namespace TrainingAppMauiVersion2.ViewModels
                 //Height = Convert.ToInt32(Height),
                 //Email = Email
             };
-            Task savePerson = SaveUser(person, myCollection);
-            if (SaveUser(person, myCollection).IsCompletedSuccessfully)
-            {
-                await savePerson;
+            await SaveUser(person, myCollection);
+            //Task savePerson = SaveUser(person, myCollection);
+            //if (SaveUser(person, myCollection).IsCompletedSuccessfully)
+            //{
+                //await savePerson;
                 await App.Current.MainPage.DisplayAlert("Success", "You are now registred as a new user", "Continue");
                 UserName = string.Empty;
                 PassWord = string.Empty;
                 Name = string.Empty;
                 Weight = string.Empty;
-            }
+            //}
             //BirthDate = string.Empty;
 
             //Height = string.Empty;
