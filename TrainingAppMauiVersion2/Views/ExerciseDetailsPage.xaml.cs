@@ -77,7 +77,6 @@ public partial class ExerciseDetailsPage : ContentPage
             Exercises = newTrainingProgram.GetListOfSets()
         };
         user.Programs.Add(trainingProgram);    
-        //await SaveNewProgram(trainingProgram, trainingPrograms); // TODO: Något fel här! Lös imorgon
         await users.ReplaceOneAsync(x => x.Id == user.Id, user);
         await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());
