@@ -7,11 +7,24 @@
              Title="SeeExercisesInProgramPage"
              NavigationPage.HasBackButton="False">
     <VerticalStackLayout>
+
         <Label 
-            Text="}"
+            Text="Hej hopp"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-
+        <VerticalStackLayout>
+            <ListView ItemsSource="{Binding Exercises}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Exercise.Name}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
         <Button
             Text="Back"
             Clicked="OnBackClicked"/>

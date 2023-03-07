@@ -7,9 +7,9 @@ public partial class ExistingTrainingProgramsPage : ContentPage
 {
     LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
-	public ExistingTrainingProgramsPage()
-	{
-		InitializeComponent();
+    public ExistingTrainingProgramsPage()
+    {
+        InitializeComponent();
         BindingContext = new ViewModels.ExistingTrainingProgramsViewModel();
     }
     private async void OnClickedExistingTrainingProgramsPage(object sender, EventArgs e)
@@ -24,12 +24,14 @@ public partial class ExistingTrainingProgramsPage : ContentPage
 
     private async void SeeExercisesInProgram(object sender, SelectedItemChangedEventArgs e)
     {
+
         if (((ListView)sender).SelectedItem is TrainingProgram trainingProgram)
         {
             chosenTrainingProgram.SetChosenTrainingProgram(trainingProgram);
-            var page = new SeeExercisesInProgramPage();
-            page.BindingContext = trainingProgram;
-            await Navigation.PushAsync(page);
+            await Navigation.PushAsync(new SeeExercisesInProgramPage());
+            //var page = new SeeExercisesInProgramPage();
+            //page.BindingContext = trainingProgram;
+            //await Navigation.PushAsync(page);
         }
     }
 

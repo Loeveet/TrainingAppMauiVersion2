@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,33 @@ namespace TrainingAppMauiVersion2.ViewModels
         ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
 
         [ObservableProperty]
-        TrainingProgram userTrainingProgram;
+        TrainingProgram trainingProgram;
+
+        [ObservableProperty]
+        ObservableCollection<ExerciseSet> exercises;
+
+        [ObservableProperty]
+        Exercise exercise;
+
+        [ObservableProperty]
+        int choosenWeight;
+        [ObservableProperty]
+        int repetitions;
+        [ObservableProperty]
+        double duration;
+        [ObservableProperty]
+        double caloriesBurned;
+
         public SeeExercisesInProgramViewModel()
         {
-            UserTrainingProgram = chosenTrainingProgram.GetChosenTrainingProgram();
+            Exercises = new ObservableCollection<ExerciseSet>();
+            TrainingProgram = new TrainingProgram();
+            TrainingProgram = chosenTrainingProgram.GetChosenTrainingProgram();
+            foreach (var set in TrainingProgram.Exercises.ToList())
+            {
+                Exercises.Add(set);
+            }
+            
         }
     }
 }

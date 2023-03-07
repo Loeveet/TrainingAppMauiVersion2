@@ -29,6 +29,15 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         string burnedCalories;
 
+        [ObservableProperty]
+        ObservableCollection<ExerciseSet> exercises;
+
+        [ObservableProperty]
+        int chosenWeight;
+
+        [ObservableProperty]
+        int repetitions;
+
 
         public ExistingTrainingProgramsViewModel()
         {
@@ -44,15 +53,7 @@ namespace TrainingAppMauiVersion2.ViewModels
             {
                 TrainingPrograms.Add(x);
             }
-            
-            //var allTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
-            //var usersTrainingProgram = allTrainingPrograms
-            //    .AsQueryable()
-            //    .Where(x => x.Person.Id == User.Id);
-            //foreach ( var tp in usersTrainingProgram)
-            //{
-            //    TrainingPrograms.Add(tp);
-            //}
+
         }
 
 
