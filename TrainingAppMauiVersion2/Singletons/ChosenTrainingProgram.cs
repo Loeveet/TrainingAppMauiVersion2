@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using TrainingAppMauiVersion2.Models;
 
 namespace TrainingAppMauiVersion2.Singletons
@@ -32,6 +33,11 @@ namespace TrainingAppMauiVersion2.Singletons
         public TrainingProgram GetChosenTrainingProgram()
         {
             return chosenTrainingProgram;
+        }
+
+        public void DeleteSetFromProgram(ExerciseSet exerciseSet)
+        {
+            chosenTrainingProgram.Exercises.Remove(exerciseSet);
         }
     }
 }

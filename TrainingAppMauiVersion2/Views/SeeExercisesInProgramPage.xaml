@@ -6,23 +6,85 @@
              x:DataType="viewmodel:SeeExercisesInProgramViewModel"
              Title="SeeExercisesInProgramPage"
              NavigationPage.HasBackButton="False">
-    <VerticalStackLayout>
-        <HorizontalStackLayout>
-            <ListView ItemsSource="{Binding Exercises}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Exercise.Name}" />
-                                <Label Text="{Binding ChoosenWeight}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </HorizontalStackLayout>
-        <Button
-            Text="Back"
-            Clicked="OnBackClicked"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid
+                RowDefinitions="auto, 50"
+                ColumnDefinitions="200, 150, 150, 210, 100">
+                <ListView ItemsSource="{Binding Exercises}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <StackLayout>
+                                        <Label Text="{Binding Exercise.Name}" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding Exercises}"
+                          Grid.Column="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <StackLayout>
+                                        <Label Text="{Binding ChoosenWeight, StringFormat='Weights: {0} kg'}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding Exercises}"
+                          Grid.Column="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <StackLayout>
+                                        <Label Text="{Binding Repetitions, StringFormat='Reps: {0}'}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding Exercises}"
+                          Grid.Column="3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame>
+                                    <StackLayout>
+                                        <Label Text="{Binding CaloriesBurned, StringFormat='Burned calories: {0} kcal'}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding Exercises}"
+                          ItemSelected="DeleteSetFromTrainingProgram"
+                          Grid.Column="4">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                    <StackLayout>
+                                    <Label Text="Delete"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Text="Back"
+                    Clicked="OnBackClicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
