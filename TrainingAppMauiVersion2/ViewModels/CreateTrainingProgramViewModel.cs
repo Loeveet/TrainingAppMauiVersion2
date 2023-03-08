@@ -150,12 +150,22 @@ namespace TrainingAppMauiVersion2.ViewModels
         [RelayCommand]
         public void ChooseDifficulty(string diff)
         {
+            if (string.IsNullOrWhiteSpace(diff))
+            {
+                chosenItem.SetChosenDifficulty(string.Empty);
+                return;
+            }
             chosenItem.SetChosenDifficulty(HelperMethods.FixWordsForApi(diff));
 
         }
         [RelayCommand]
         public void ChooseType(string type)
         {
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                chosenItem.SetChosenTypeOfExercise(string.Empty);
+                return;
+            }
             chosenItem.SetChosenTypeOfExercise(HelperMethods.FixWordsForApi(type));
 
         }

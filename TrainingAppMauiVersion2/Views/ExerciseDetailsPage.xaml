@@ -7,7 +7,7 @@
     <ScrollView>
         <Grid 
             ColumnDefinitions="200, 200"
-            RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto">
+            RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto, auto">
 
             <Label
             Grid.ColumnSpan="2"
@@ -60,6 +60,12 @@
                 Grid.ColumnSpan="2"
                 Text="Back"
                 Clicked="OnClickedBack"/>
+            <Button
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Text="Check chosen exercises"
+                Clicked="OnClickedCurrentSetList"/>
         </Grid>
+
     </ScrollView>
 </ContentPage>
