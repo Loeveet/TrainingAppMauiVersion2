@@ -9,7 +9,7 @@
     <ScrollView>
         <VerticalStackLayout>
             <Grid
-                RowDefinitions="auto, 50, 50"
+                RowDefinitions="auto, 50, 50, 50"
                 ColumnDefinitions="300, 150, 150, 210, 100, 100">
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
                     <CollectionView.ItemTemplate>
@@ -39,10 +39,10 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <ListView 
+                <!--<ListView 
                     ItemsSource="{Binding Exercises}" 
                     ItemSelected="EditSet"
-                    Grid.Column="4">
+                    Grid.Column="5">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -55,11 +55,11 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+                </ListView>-->
                 <ListView 
                     ItemsSource="{Binding Exercises}" 
                     ItemSelected="DeleteSetFromTrainingProgram"
-                    Grid.Column="5">
+                    Grid.Column="4">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -73,69 +73,19 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-                <!--<ListView ItemsSource="{Binding Exercises}"
-                          Grid.Column="1">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame>
-                                    <StackLayout>
-                                        <Label Text="{Binding ChoosenWeight, StringFormat='Weights: {0} kg'}"/>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ListView ItemsSource="{Binding Exercises}"
-                          Grid.Column="2">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame>
-                                    <StackLayout>
-                                        <Label Text="{Binding Repetitions, StringFormat='Reps: {0}'}"/>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ListView ItemsSource="{Binding Exercises}"
-                          Grid.Column="3">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame>
-                                    <StackLayout>
-                                        <Label Text="{Binding CaloriesBurned, StringFormat='Burned calories: {0} kcal'}"/>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-                <!--<ListView ItemsSource="{Binding Exercises}"
-                          ItemSelected="DeleteSetFromTrainingProgram"
-                          Grid.Column="4">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                    <StackLayout>
-                                    <Label Text="Delete"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+                
                 <Label
                     Grid.Row="1"
                     Grid.ColumnSpan="5"
-                    Text="{Binding TotalCalories, StringFormat='Total calories burned in this program: {0} kcal'}"
-                    FontSize="14"/>
-                <Button
+                    Text="{Binding TotalCalories, StringFormat='Total calories burned: {0} kcal'}"
+                    FontSize="20"/>
+                <Label
                     Grid.Row="2"
+                    Grid.ColumnSpan="5"
+                    Text="{Binding TotalWeight, StringFormat='Total kilograms of lifted weights: {0} kg'}"
+                    FontSize="20"/>
+                <Button
+                    Grid.Row="3"
                     Grid.ColumnSpan="2"
                     Text="Back"
                     Clicked="OnBackClicked"/>
