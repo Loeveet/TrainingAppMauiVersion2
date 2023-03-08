@@ -16,7 +16,7 @@
                 Text="{Binding OWeather.Main.Temp}"/>
 
             <Image
-                Source="dotnet_bot.png"
+                Source="dumbbells.jpg"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
