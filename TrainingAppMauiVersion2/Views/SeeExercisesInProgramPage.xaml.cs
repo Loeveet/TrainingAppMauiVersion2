@@ -18,18 +18,21 @@ public partial class SeeExercisesInProgramPage : ContentPage
 
     }
 
-    private async void OnBackClicked(object sender, EventArgs e)
+    protected override void OnAppearing()
     {
-        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+        base.OnAppearing();
+        BindingContext = new SeeExercisesInProgramViewModel();
+        //if (!pageStarted)
+        //{
+        //    pageStarted = true;
+        //}
     }
+
 
     private async void DeleteSetFromTrainingProgram(object sender, SelectedItemChangedEventArgs e)
     {
         var user = loggedInUser.GetLoggedInPerson();
         var users = await Connections.Connection.UserCollection();
-
-
-
 
         if (((ListView)sender).SelectedItem is ExerciseSet set)
         {
@@ -41,6 +44,10 @@ public partial class SeeExercisesInProgramPage : ContentPage
         }
     }
 
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+    }
     private async void EditSet(object sender, SelectedItemChangedEventArgs e)
     {
         var user = loggedInUser.GetLoggedInPerson();

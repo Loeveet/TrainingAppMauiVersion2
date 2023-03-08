@@ -31,6 +31,12 @@ namespace TrainingAppMauiVersion2.ViewModels
         double duration;
         [ObservableProperty]
         double caloriesBurned;
+        [ObservableProperty]
+        double totalCalories = 0;
+        [ObservableProperty]
+        int totalReps = 0;
+        [ObservableProperty]
+        int totalWeight = 0;
 
         public SeeExercisesInProgramViewModel()
         {
@@ -40,6 +46,9 @@ namespace TrainingAppMauiVersion2.ViewModels
             foreach (var set in TrainingProgram.Exercises.ToList())
             {
                 Exercises.Add(set);
+                TotalCalories += set.CaloriesBurned;
+                TotalReps += set.Repetitions;
+                TotalWeight += set.ChoosenWeight;
             }
             
         }

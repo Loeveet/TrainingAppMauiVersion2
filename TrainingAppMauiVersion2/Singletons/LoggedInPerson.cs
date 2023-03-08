@@ -9,7 +9,7 @@ namespace TrainingAppMauiVersion2.Singletons
 {
     class LoggedInPerson
     {
-        private Person loginPerson = new ();
+        private Person loginPerson = new Person();
 
 
         private static readonly LoggedInPerson _instance = new LoggedInPerson();

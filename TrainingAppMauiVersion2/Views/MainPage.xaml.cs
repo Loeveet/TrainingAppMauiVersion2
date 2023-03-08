@@ -3,6 +3,7 @@ using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.ViewModels;
 using TrainingAppMauiVersion2.Singletons;
 using TrainingAppMauiVersion2.Facade;
+using Microsoft.Maui.Controls.Internals;
 
 namespace TrainingAppMauiVersion2;
 
@@ -18,7 +19,6 @@ public partial class MainPage : ContentPage
     //TODO: 8. Göra hela appen snyggare
 
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
-
     ILoginFacade _loginFacade = new LoginFacade();
 
     public MainPage()
@@ -50,8 +50,8 @@ public partial class MainPage : ContentPage
             PassWord.Text = string.Empty;
             return;
         }
-
         await DisplayAlert("Failed to log in", "Wrong username or password", "Try again");
+
 
     }
 }

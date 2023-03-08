@@ -15,6 +15,9 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
+        string input;
+
+        [ObservableProperty]
         string userName;
 
         [ObservableProperty]

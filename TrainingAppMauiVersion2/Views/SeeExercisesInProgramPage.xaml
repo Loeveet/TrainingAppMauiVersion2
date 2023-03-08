@@ -9,7 +9,7 @@
     <ScrollView>
         <VerticalStackLayout>
             <Grid
-                RowDefinitions="auto, 50"
+                RowDefinitions="auto, 50, 50"
                 ColumnDefinitions="300, 150, 150, 210, 100, 100">
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
                     <CollectionView.ItemTemplate>
@@ -129,8 +129,13 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
-                <Button
+                <Label
                     Grid.Row="1"
+                    Grid.ColumnSpan="5"
+                    Text="{Binding TotalCalories, StringFormat='Total calories burned in this program: {0} kcal'}"
+                    FontSize="14"/>
+                <Button
+                    Grid.Row="2"
                     Grid.ColumnSpan="2"
                     Text="Back"
                     Clicked="OnBackClicked"/>
