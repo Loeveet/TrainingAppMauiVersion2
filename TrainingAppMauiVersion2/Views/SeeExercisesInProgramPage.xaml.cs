@@ -40,4 +40,21 @@ public partial class SeeExercisesInProgramPage : ContentPage
             await Navigation.PushAsync(page);
         }
     }
+
+    private async void EditSet(object sender, SelectedItemChangedEventArgs e)
+    {
+        var user = loggedInUser.GetLoggedInPerson();
+        var users = await Connections.Connection.UserCollection();
+
+
+        if (((ListView)sender).SelectedItem is ExerciseSet set)
+        {
+            chosenTrainingProgram.EditSetInProgram(set); //TODO: metod utan innehåll. händer inget
+            await users.ReplaceOneAsync(x => x.Id == user.Id, user);
+
+            var page = new SeeExercisesInProgramPage();
+            await Navigation.PushAsync(page);
+        }
+
+    }
 }

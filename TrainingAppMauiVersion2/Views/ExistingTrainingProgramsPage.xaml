@@ -17,27 +17,47 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <VerticalStackLayout>
-            <ListView
+            <Grid ColumnDefinitions="auto, auto">
+                <ListView
                  ItemsSource="{Binding TrainingPrograms}"
-                ItemSelected="SeeExercisesInProgram">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid 
+                ItemSelected="SeeExercisesInProgram"
+                    Grid.Column="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
                                 Padding="5">
-
-                                <Frame 
-                                    BorderColor="DimGrey">
-                                    <Label
+                                    <Frame>
+                                        <Label                                          
                                         Text="{Binding Name}"
                                         FontSize="20"/>
-                                </Frame>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView
+                 ItemsSource="{Binding TrainingPrograms}"
+                 ItemSelected="Delete"
+                    Grid.Column="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                                Padding="5">
+                                    <Frame>
 
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                        <Label
+                                        Text="Delete"
+                                        FontSize="20"/>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </VerticalStackLayout>
         <Button
                 Text="Create training programs"

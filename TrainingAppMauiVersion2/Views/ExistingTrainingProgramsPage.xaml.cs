@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.Singletons;
 
@@ -5,7 +6,7 @@ namespace TrainingAppMauiVersion2.Views;
 
 public partial class ExistingTrainingProgramsPage : ContentPage
 {
-    LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+    LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
     public ExistingTrainingProgramsPage()
     {
@@ -29,15 +30,26 @@ public partial class ExistingTrainingProgramsPage : ContentPage
         {
             chosenTrainingProgram.SetChosenTrainingProgram(trainingProgram);
             await Navigation.PushAsync(new SeeExercisesInProgramPage());
-            //var page = new SeeExercisesInProgramPage();
-            //page.BindingContext = trainingProgram;
-            //await Navigation.PushAsync(page);
         }
     }
 
     private async void OnClickedLoggedOut(object sender, EventArgs e)
     {
-        user.SetLoggedInPerson(null);
+        loggedInUser.SetLoggedInPerson(null);
         await Navigation.PopToRootAsync();
+    }
+
+    private async void Delete(object sender, SelectedItemChangedEventArgs e)
+    {
+        var user = loggedInUser.GetLoggedInPerson();
+        var users = await Connections.Connection.UserCollection();
+
+        if (((ListView)sender).SelectedItem is TrainingProgram trainingProgram)
+        {
+            user.Programs.Remove(trainingProgram);
+            await users.ReplaceOneAsync(x => x.Id == user.Id, user);            
+            await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+        }
+
     }
 }
