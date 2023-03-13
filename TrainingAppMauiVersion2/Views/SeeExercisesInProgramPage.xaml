@@ -69,7 +69,7 @@
                     FontSize="20"/>
             </Grid>
             <Button
-                MaximumWidthRequest="220"
+                WidthRequest="220"
                 HorizontalOptions="Center"
                 Text="Back"
                 Clicked="OnBackClicked"/>
