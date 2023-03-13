@@ -18,6 +18,7 @@ public partial class MainPage : ContentPage
 
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ILoginFacade _loginFacade = new LoginFacade();
+    WrongInput wrongInput = WrongInput.GetInstansOfInputs();
 
     public MainPage()
     {
@@ -25,11 +26,11 @@ public partial class MainPage : ContentPage
         BindingContext = new MainPageViewModel();
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        (BindingContext as MainPageViewModel).GetAWeather();
-    }
+    //protected override void OnAppearing()
+    //{
+    //    base.OnAppearing();
+    //    BindingContext = new MainPageViewModel();
+    //}
 
     private async void OnClickedRegister(object sender, EventArgs e)
     {
@@ -46,9 +47,13 @@ public partial class MainPage : ContentPage
             await Navigation.PushAsync(new Views.ExistingTrainingProgramsPage());
             UserName.Text = string.Empty;
             PassWord.Text = string.Empty;
+            wrongInput.SetWrongInputLogInPage(true);
             return;
         }
-        await DisplayAlert("Failed to log in", "Wrong username or password", "Try again");
+        UserName.Text = string.Empty;
+        PassWord.Text = string.Empty;
+        wrongInput.SetWrongInputLogInPage(false);
+        await Navigation.PushAsync(new MainPage());
 
 
     }

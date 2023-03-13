@@ -14,6 +14,8 @@ namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class MainPageViewModel : ObservableObject
     {
+        WrongInput wrongInput = WrongInput.GetInstansOfInputs();
+
         [ObservableProperty]
         string input;
 
@@ -23,19 +25,20 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         string passWord;
 
-        [ObservableProperty]
-        OpenWeather oWeather;
+        //[ObservableProperty]
+        //OpenWeather oWeather;
 
         public MainPageViewModel()
         {
-            OWeather = new OpenWeather();
+            Input = wrongInput.GetWrongInputLogInPage();
+            //OWeather = new OpenWeather();
         }
 
-        public async void GetAWeather()
-        {
-            var weather = await Connections.Connection.GetWeatherAsync("Nyköping");
-            OWeather = weather;
-        }
+        //public async void GetAWeather()
+        //{
+        //    var weather = await Connections.Connection.GetWeatherAsync("Nyköping");
+        //    OWeather = weather;
+        //}
 
 
 

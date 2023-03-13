@@ -10,10 +10,10 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <Label
+            <!--<Label
                 Text="{Binding OWeather.Name}"/>
             <Label
-                Text="{Binding OWeather.Main.Temp}"/>
+                Text="{Binding OWeather.Main.Temp}"/>-->
 
             <Image
                 Source="powermuscles.png"
@@ -22,15 +22,22 @@
                 HorizontalOptions="Center" />
             <Entry 
                 x:Name="UserName"
-                Placeholder="Username"/>
+                Placeholder="Username"
+                MaximumWidthRequest="220"/>
             <Entry
                 x:Name="PassWord"
                 Placeholder="Password"
+                MaximumWidthRequest="220"
                 IsPassword="True"/>
+
+            <Label
+                Text="{Binding Input}"
+                TextColor="Red"
+                HorizontalOptions="Center"/>
 
             <Button
                 Text="Log in"
-                WidthRequest="220"
+                MaximumWidthRequest="220"
                 Clicked="OnClickedLogIn"
                 HorizontalOptions="Center" />
 
@@ -38,7 +45,7 @@
                 x:Name="MyRegister"
                 Text="Not a member? Register here"
                 Clicked="OnClickedRegister"
-                WidthRequest="220"
+                MaximumWidthRequest="220"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
