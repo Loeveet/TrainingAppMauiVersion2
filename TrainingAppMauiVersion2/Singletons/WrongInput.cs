@@ -10,6 +10,7 @@ namespace TrainingAppMauiVersion2.Singletons
     {
         private string wrongInputLogInPage;
         private string userNameTaken;
+        private string incorrectWeight;
 
         private static readonly WrongInput _instance = new WrongInput();
 
@@ -17,6 +18,7 @@ namespace TrainingAppMauiVersion2.Singletons
         {
             wrongInputLogInPage = string.Empty;
             userNameTaken = string.Empty;
+            incorrectWeight = string.Empty;
         }
 
         public static WrongInput GetInstansOfInputs()         //Nytt
@@ -62,6 +64,23 @@ namespace TrainingAppMauiVersion2.Singletons
         public string GetUserNameTaken()
         {
             return userNameTaken;
+        }
+        public void SetIncorrectWeight(bool b)
+        {
+            if (b == false)
+            {
+                incorrectWeight = "Use numbers when entering weight";
+            }
+            else
+            {
+
+                incorrectWeight = string.Empty;
+            }
+        }
+
+        public string GetIncorrectWeight()
+        {
+            return incorrectWeight;
         }
 
     }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.NewFolder
 {
+    
     class HelperMethods
     {
         public static string[] CapitalizeFirstLetterInArray(string[] array)
@@ -38,13 +40,14 @@ namespace TrainingAppMauiVersion2.NewFolder
             double pounds = kg * 2.2046226218;
             return Math.Round(pounds);
         }
-        public static int TryParseToInt(string input)
+        public static double TryParseToDouble(string input)
         {
-            int id;
+            double id;
 
-            if (!int.TryParse(input, out id))
+            if (!double.TryParse(input, out id))
             {
-                App.Current.MainPage.DisplayAlert("Failed", "Use numbers while input a number", "Try again");
+                return 0;
+                //App.Current.MainPage.DisplayAlert("Failed", "Use numbers while input a number", "Try again");
             }
             return id;
         }

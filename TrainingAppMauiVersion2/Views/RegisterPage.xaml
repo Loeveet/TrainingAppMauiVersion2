@@ -41,9 +41,6 @@
                 Text="{Binding BirthDate}"
                 Placeholder="Date of birth (yyyy-mm-dd)"/>
 
-            <Entry
-                Text="{Binding Weight}"
-                Placeholder="Weigtht in kg"/>
 
             <Entry
                 Text="{Binding Height}"
@@ -52,10 +49,19 @@
             <Entry
                 Text="{Binding Email}"
                 Placeholder="Email"/>-->
-            
+            <Label
+                Text="{Binding UserNameTaken}"
+                TextColor="Red"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="{Binding CorrectWeight}"
+                TextColor="Red"
+                HorizontalOptions="Center"/>
+
             <Button
                 Command="{Binding ClickedRegisterButtonCommand}"
-                Text="Register"/>
+                Text="Register"
+                Clicked="OnRegisterClicked"/>
             <Button
                 Text="Back"
                 Clicked="OnBackClicked"/>

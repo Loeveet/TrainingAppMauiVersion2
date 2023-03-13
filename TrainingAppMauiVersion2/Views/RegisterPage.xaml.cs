@@ -1,9 +1,11 @@
+using TrainingAppMauiVersion2.Singletons;
 using TrainingAppMauiVersion2.ViewModels;
 
 namespace TrainingAppMauiVersion2.Views;
 
 public partial class RegisterPage : ContentPage
 {
+    WrongInput inputs = WrongInput.GetInstansOfInputs();
 	public RegisterPage()
 	{
 		InitializeComponent();
@@ -12,6 +14,20 @@ public partial class RegisterPage : ContentPage
     }
     public void OnBackClicked(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
+        inputs.SetIncorrectWeight(true);
+        inputs.SetUserNameTaken(true);
+        Navigation.PopToRootAsync();
+    }
+
+    private void OnRegisterClicked(object sender, EventArgs e)
+    {
+        if (inputs.GetUserNameTaken() == string.Empty && inputs.GetIncorrectWeight() == string.Empty)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+        else
+        {
+            Navigation.PushAsync(new RegisterPage());
+        }
     }
 }

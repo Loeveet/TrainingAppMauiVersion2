@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.NewFolder;
+using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class RegisterPageViewModel : ObservableObject
     {
+        WrongInput wrongInput = WrongInput.GetInstansOfInputs();
+
         [ObservableProperty]
         string userName;
         [ObservableProperty]
@@ -27,52 +30,90 @@ namespace TrainingAppMauiVersion2.ViewModels
         string height;
         [ObservableProperty]
         string email;
+        [ObservableProperty]
+        string userNameTaken;
+        [ObservableProperty]
+        string correctWeight;
+
+        public bool UserNameOk { get; set; }
+        public bool WeightOk { get; set; }
+
+        public RegisterPageViewModel()
+        {
+            UserNameTaken = wrongInput.GetUserNameTaken();
+            CorrectWeight = wrongInput.GetIncorrectWeight();
+        }
 
         [RelayCommand]
         public async void OnClickedRegisterButton()
         {
-            var myCollection = await Connections.Connection.UserCollection();
-            //Skapa en knapp för att registera personen om alla inmatningar är korrekta
-            //och sen gå tillbaka till mainpage, för att logga in med valda parametrar
-
+            var users = await Connections.Connection.UserCollection();
 
             Person person = new Person()
             {
                 Id = new Guid(),
-                UserName = UserName,
+                UserName = await CheckUserName(UserName),
                 PassWord = PassWord,
                 Name = Name,
                 Programs = new List<TrainingProgram>(),
-                //Birthday = Convert.ToDateTime(BirthDate),
-                Weight = HelperMethods.TryParseToInt(Weight)
-                //Height = Convert.ToInt32(Height),
-                //Email = Email
+                Weight = CheckWeight()
             };
-            await SaveUser(person, myCollection);
-            //Task savePerson = SaveUser(person, myCollection);
-            //if (SaveUser(person, myCollection).IsCompletedSuccessfully)
-            //{
-                //await savePerson;
+
+            if (UserNameOk && WeightOk)
+            {
+                await SaveUser(person, users);
                 await App.Current.MainPage.DisplayAlert("Success", "You are now registred as a new user", "Continue");
                 UserName = string.Empty;
                 PassWord = string.Empty;
                 Name = string.Empty;
                 Weight = string.Empty;
-            //}
-            //BirthDate = string.Empty;
-
-            //Height = string.Empty;
-            //Email = string.Empty;
-            //else
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Failed", "Some field is incorrect", "Try again");
-            //}
+            }
 
 
         }
-        private static async Task SaveUser(Person person, IMongoCollection<Person> myCollection)
+        private static async Task SaveUser(Person person, IMongoCollection<Person> users)
         {
-            await myCollection.InsertOneAsync(person);
+            await users.InsertOneAsync(person);
+        }
+        private async Task<string> CheckUserName(string name)
+        {
+            WrongInput userNameTaken = WrongInput.GetInstansOfInputs();
+            if (name == null || name == string.Empty)
+            {
+                return string.Empty;
+            }
+
+            var users = await Connections.Connection.UserCollection();
+            foreach (var user in users.AsQueryable())
+            {
+                if (name == user.UserName)
+                {
+                    userNameTaken.SetUserNameTaken(false);
+                    UserNameOk = false;
+                    return string.Empty;
+                }
+            }
+            userNameTaken.SetUserNameTaken(true);
+            UserNameOk = true;
+            return name;
+        }
+
+        private double CheckWeight()
+        {
+            var w = HelperMethods.TryParseToDouble(Weight);
+            if (w == 0)
+            {
+                wrongInput.SetIncorrectWeight(false);
+                CorrectWeight = wrongInput.GetIncorrectWeight();
+                WeightOk = false;
+            }
+            else
+            {
+                wrongInput.SetIncorrectWeight(true);
+                CorrectWeight = wrongInput.GetIncorrectWeight();
+                WeightOk = true;
+            }
+            return w;
         }
     }
 }
