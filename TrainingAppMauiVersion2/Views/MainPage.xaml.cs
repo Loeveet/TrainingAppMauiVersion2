@@ -26,12 +26,6 @@ public partial class MainPage : ContentPage
         BindingContext = new MainPageViewModel();
     }
 
-    //protected override void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    BindingContext = new MainPageViewModel();
-    //}
-
     private async void OnClickedRegister(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Views.RegisterPage());
