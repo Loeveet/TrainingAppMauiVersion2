@@ -35,11 +35,7 @@ namespace TrainingAppMauiVersion2.NewFolder
             string newWord = word.ToLower().Replace(' ', '_');
             return newWord;
         }
-        public static double ConvertKgToPounds(double kg)
-        {
-            double pounds = kg * 2.2046226218;
-            return Math.Round(pounds);
-        }
+
         public static double TryParseToDouble(string input)
         {
             double id;

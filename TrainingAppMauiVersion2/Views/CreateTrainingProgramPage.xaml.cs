@@ -1,4 +1,3 @@
-using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.Singletons;
 using TrainingAppMauiVersion2.ViewModels;
 

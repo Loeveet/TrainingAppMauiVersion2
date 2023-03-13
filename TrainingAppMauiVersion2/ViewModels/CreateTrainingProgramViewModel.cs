@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.NewFolder;
-using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.Singletons;
 using TrainingAppMauiVersion2.Views;
 
@@ -104,30 +103,30 @@ namespace TrainingAppMauiVersion2.ViewModels
             }
         }
 
-        [RelayCommand]
-        public async void ClickedGetProgramsButton()
-        {
+        //[RelayCommand]
+        //public async void ClickedGetProgramsButton()
+        //{
 
-            var myTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
-            var users = await Connections.Connection.UserCollection();
-            var user = users
-                .AsQueryable()
-                .SingleOrDefault(x => x.Id == Person.Id);
-
-
-            TrainingProgram program = new()
-            {
-                Name = Name,
-                Exercises = new List<ExerciseSet>()
-
-            };
-            user.Programs.Add(program);
-            await SaveProgram(program, myTrainingPrograms);
-            await users.ReplaceOneAsync(x => x.Id == Person.Id, user);
-            await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
+        //    var myTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
+        //    var users = await Connections.Connection.UserCollection();
+        //    var user = users
+        //        .AsQueryable()
+        //        .SingleOrDefault(x => x.Id == Person.Id);
 
 
-        }
+        //    TrainingProgram program = new()
+        //    {
+        //        Name = Name,
+        //        Exercises = new List<ExerciseSet>()
+
+        //    };
+        //    user.Programs.Add(program);
+        //    await SaveProgram(program, myTrainingPrograms);
+        //    await users.ReplaceOneAsync(x => x.Id == Person.Id, user);
+        //    await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
+
+
+        //}
 
         
 

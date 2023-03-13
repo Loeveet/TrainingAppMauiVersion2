@@ -21,7 +21,7 @@ namespace TrainingAppMauiVersion2.Singletons
             incorrectWeight = string.Empty;
         }
 
-        public static WrongInput GetInstansOfInputs()         //Nytt
+        public static WrongInput GetInstansOfInputs()
         {
 
             return _instance;

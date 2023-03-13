@@ -19,7 +19,7 @@ namespace TrainingAppMauiVersion2.Singletons
             
         }
 
-        public static LoggedInPerson GetInstansOfLoggedInPerson()         //Nytt
+        public static LoggedInPerson GetInstansOfLoggedInPerson()
         {
             
             return _instance;

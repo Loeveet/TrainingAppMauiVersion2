@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
-using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.Connections
@@ -26,14 +25,14 @@ namespace TrainingAppMauiVersion2.Connections
 
         }
 
-        public static async Task<IMongoCollection<TrainingProgram>> TrainingProgramCollection()
-        {
-            var settings = MongoClientSettings.FromConnectionString("mongodb://RobinLiliegren:robin88@ac-ypkinxo-shard-00-00.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-01.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-02.cst2dyy.mongodb.net:27017/?ssl=true&replicaSet=atlas-fch61g-shard-0&authSource=admin&retryWrites=true&w=majority");
-            var client = new MongoClient(settings);
-            var database = client.GetDatabase("TrainingAppPerson");
-            var myTrainingPrograms = database.GetCollection<TrainingProgram>("MyPrograms");
-            return myTrainingPrograms;
-        }
+        //public static async Task<IMongoCollection<TrainingProgram>> TrainingProgramCollection()
+        //{
+        //    var settings = MongoClientSettings.FromConnectionString("mongodb://RobinLiliegren:robin88@ac-ypkinxo-shard-00-00.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-01.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-02.cst2dyy.mongodb.net:27017/?ssl=true&replicaSet=atlas-fch61g-shard-0&authSource=admin&retryWrites=true&w=majority");
+        //    var client = new MongoClient(settings);
+        //    var database = client.GetDatabase("TrainingAppPerson");
+        //    var myTrainingPrograms = database.GetCollection<TrainingProgram>("MyPrograms");
+        //    return myTrainingPrograms;
+        //}
 
         public static async Task<ObservableCollection<Exercise>> GetExercices()
         {
@@ -54,22 +53,22 @@ namespace TrainingAppMauiVersion2.Connections
 
             return exercises;
         }
-        public static async Task<OpenWeather> GetWeatherAsync(string city)
-        {
+        //public static async Task<OpenWeather> GetWeatherAsync(string city)
+        //{
 
-            string apiKey = "aaa3c5f1fb092617638c1dcf8266f07b";
+        //    string apiKey = "aaa3c5f1fb092617638c1dcf8266f07b";
 
-            string url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric";
-            OpenWeather weatherData = null;
-            var client = new HttpClient();
-            HttpResponseMessage response1 = await client.GetAsync(url);
-            if (response1.IsSuccessStatusCode)
-            {
-                string apiResponse = await response1.Content.ReadAsStringAsync();
-                weatherData = JsonSerializer.Deserialize<OpenWeather>(apiResponse);
+        //    string url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}&units=metric";
+        //    OpenWeather weatherData = null;
+        //    var client = new HttpClient();
+        //    HttpResponseMessage response1 = await client.GetAsync(url);
+        //    if (response1.IsSuccessStatusCode)
+        //    {
+        //        string apiResponse = await response1.Content.ReadAsStringAsync();
+        //        weatherData = JsonSerializer.Deserialize<OpenWeather>(apiResponse);
 
-            }
-            return weatherData;
-        }
+        //    }
+        //    return weatherData;
+        //}
     }
 }

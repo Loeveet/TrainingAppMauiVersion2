@@ -58,7 +58,7 @@ public partial class ExerciseDetailsPage : ContentPage
     private async void AddProgramToUser(object sender, EventArgs e)
     {
 
-        var trainingPrograms = await Connections.Connection.TrainingProgramCollection();
+        //var trainingPrograms = await Connections.Connection.TrainingProgramCollection();
         var users = await Connections.Connection.UserCollection();
         var person = users
             .AsQueryable().

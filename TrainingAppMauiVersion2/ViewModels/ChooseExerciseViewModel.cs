@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Models;
-using TrainingAppMauiVersion2.SessionData;
 using TrainingAppMauiVersion2.Singletons;
 
 namespace TrainingAppMauiVersion2.ViewModels

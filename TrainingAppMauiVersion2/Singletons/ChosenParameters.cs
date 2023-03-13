@@ -22,7 +22,7 @@ namespace TrainingAppMauiVersion2.Singletons
             chosenTypeOfTraining = string.Empty;
         }
 
-        public static ChosenParameters GetInstansOfChosenParameters()         //Nytt
+        public static ChosenParameters GetInstansOfChosenParameters()
         {
 
             return _instance;

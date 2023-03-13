@@ -18,7 +18,7 @@ namespace TrainingAppMauiVersion2.Singletons
             chosenExercise = new Exercise();
         }
 
-        public static ChosenExercise GetInstansOfChosenExercise()         //Nytt
+        public static ChosenExercise GetInstansOfChosenExercise()
         {
 
             return _instance;

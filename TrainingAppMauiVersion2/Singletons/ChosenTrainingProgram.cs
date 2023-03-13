@@ -39,9 +39,6 @@ namespace TrainingAppMauiVersion2.Singletons
         {
             chosenTrainingProgram.Exercises.Remove(exerciseSet);
         }
-        public void EditSetInProgram(ExerciseSet exerciseSet)
-        {
-            //TODO: eventuellt skapa metod för att ändra i befintligt set. inte prio
-        }
+
     }
 }

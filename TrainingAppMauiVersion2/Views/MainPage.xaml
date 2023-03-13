@@ -10,10 +10,6 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <!--<Label
-                Text="{Binding OWeather.Name}"/>
-            <Label
-                Text="{Binding OWeather.Main.Temp}"/>-->
 
             <Image
                 Source="powermuscles.png"
