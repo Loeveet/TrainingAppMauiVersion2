@@ -39,23 +39,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <!--<ListView 
-                    ItemsSource="{Binding Exercises}" 
-                    ItemSelected="EditSet"
-                    Grid.Column="5">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid
-                                    Margin="10">
-                                    <StackLayout>
-                                        <Label Text="Edit set"/>
-                                    </StackLayout>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
                 <ListView 
                     ItemsSource="{Binding Exercises}" 
                     ItemSelected="DeleteSetFromTrainingProgram"
@@ -73,7 +56,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
                 <Label
                     Grid.Row="1"
                     Grid.ColumnSpan="5"
@@ -84,16 +67,16 @@
                     Grid.ColumnSpan="5"
                     Text="{Binding TotalWeight, StringFormat='Total kilograms of lifted weights: {0} kg'}"
                     FontSize="20"/>
-                <Button
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2"
-                    Text="Back"
-                    Clicked="OnBackClicked"/>
             </Grid>
             <Button
-            Text="Log out"
-            Clicked="OnClickedLogOut"
-            HorizontalOptions="Center"/>
+                MaximumWidthRequest="220"
+                HorizontalOptions="Center"
+                Text="Back"
+                Clicked="OnBackClicked"/>
+            <Button
+                Text="Log out"
+                Clicked="OnClickedLogOut"
+                HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

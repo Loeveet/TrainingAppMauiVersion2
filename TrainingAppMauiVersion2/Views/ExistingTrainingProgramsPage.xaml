@@ -16,7 +16,8 @@
             Text="{Binding TrainingPrograms.Count, StringFormat='Number of personal training programs: {0}'}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <VerticalStackLayout>
+        <VerticalStackLayout
+            HorizontalOptions="Center">
             <Grid ColumnDefinitions="auto, auto">
                 <ListView
                  ItemsSource="{Binding TrainingPrograms}"
@@ -60,8 +61,9 @@
             </Grid>
         </VerticalStackLayout>
         <Button
-                Text="Create training programs"
-                Clicked="OnClickedCreateTrainingProgramPage"/>
+            HorizontalOptions="Center"            
+            Text="Create training programs"
+            Clicked="OnClickedCreateTrainingProgramPage"/>
         <Button
             Text="Log out"
             Clicked="OnClickedLogOut"

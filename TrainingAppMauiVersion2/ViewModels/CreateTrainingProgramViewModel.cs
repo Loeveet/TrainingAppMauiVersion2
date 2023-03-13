@@ -25,7 +25,6 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
 
-        NewTrainingProgram listOfSets = NewTrainingProgram.GetInstansOfListOfSets();
 
         [ObservableProperty]
         Person person;
@@ -60,9 +59,12 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         [ObservableProperty]
         string chosenType;
+
+        [ObservableProperty]
+        int nrOfSets;
+
         public CreateTrainingProgramViewModel()
         {
-
             Person = user.GetLoggedInPerson();
             ChosenMuscle = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenMuscle());
             ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenDifficulty());

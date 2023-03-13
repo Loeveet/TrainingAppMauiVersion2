@@ -8,6 +8,8 @@ public partial class ExistingTrainingProgramsPage : ContentPage
 {
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
+    NewTrainingProgram newTrainingProgram = NewTrainingProgram.GetInstansOfListOfSets();
+
     public ExistingTrainingProgramsPage()
     {
         InitializeComponent();
@@ -20,6 +22,7 @@ public partial class ExistingTrainingProgramsPage : ContentPage
 
     private async void OnClickedCreateTrainingProgramPage(object sender, EventArgs e)
     {
+        newTrainingProgram.ResetList();
         await Navigation.PushAsync(new CreateTrainingProgramPage());
     }
 

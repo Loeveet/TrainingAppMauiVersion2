@@ -29,8 +29,17 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         int repetitions;
 
+        [ObservableProperty]
+        int nrOfSets;
+
+        [ObservableProperty]
+        int offSetButtons;
+
         public CurrentSetListPageViewModel()
         {
+            NrOfSets = program.GetListOfSets().Count();
+            OffSetButtons = SetButtonOffSet();
+
             Exercises = new ObservableCollection<ExerciseSet>();
             foreach (var x in program.GetListOfSets())
             {
@@ -41,6 +50,17 @@ namespace TrainingAppMauiVersion2.ViewModels
                 Repetitions = x.Repetitions;
 
             }
+        }
+
+        private int SetButtonOffSet()
+        {
+            if (program.GetListOfSets().Count() != 0)
+            {
+                return 2;
+            }
+            
+            return 0;
+
         }
     }
 }
