@@ -11,6 +11,6 @@ namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class ExerciseDetailsViewModel : ObservableObject
     {
-
+        //TODO: kan kanske ta bort hela classen
     }
 }

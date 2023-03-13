@@ -38,7 +38,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         public CurrentSetListPageViewModel()
         {
             NrOfSets = program.GetListOfSets().Count();
-            OffSetButtons = SetButtonOffSet();
+            OffSetButtons = SetButtonOffSet(); //TODO: vet inte om jag ska använda
 
             Exercises = new ObservableCollection<ExerciseSet>();
             foreach (var x in program.GetListOfSets())

@@ -26,21 +26,13 @@ namespace TrainingAppMauiVersion2.ViewModels
         [ObservableProperty]
         string passWord;
 
-        //[ObservableProperty]
-        //OpenWeather oWeather;
 
         public MainPageViewModel()
         {
             user.SetLoggedInPerson(null);
             Input = wrongInput.GetWrongInputLogInPage();
-            //OWeather = new OpenWeather();
         }
 
-        //public async void GetAWeather()
-        //{
-        //    var weather = await Connections.Connection.GetWeatherAsync("Nyköping");
-        //    OWeather = weather;
-        //}
 
 
 

@@ -63,19 +63,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <!--<Button
-                    Grid.Row="2"
-                    Grid.Column="{Binding OffSetButtons}"                    
-                    Text="Back"
-                    Clicked="OnClickedBack"
-                    WidthRequest="220"
-                    HorizontalOptions="Center"/>
-                <Button
-                    Grid.Row="3"
-                    Grid.Column="{Binding OffSetButtons}"
-                    Text="Log out"
-                    Clicked="OnClickedLogOut"
-                    HorizontalOptions="Center"/>-->
+
             </Grid>
 
             <Button

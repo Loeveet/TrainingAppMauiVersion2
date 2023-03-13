@@ -103,40 +103,6 @@ namespace TrainingAppMauiVersion2.ViewModels
             }
         }
 
-        //[RelayCommand]
-        //public async void ClickedGetProgramsButton()
-        //{
-
-        //    var myTrainingPrograms = await Connections.Connection.TrainingProgramCollection();
-        //    var users = await Connections.Connection.UserCollection();
-        //    var user = users
-        //        .AsQueryable()
-        //        .SingleOrDefault(x => x.Id == Person.Id);
-
-
-        //    TrainingProgram program = new()
-        //    {
-        //        Name = Name,
-        //        Exercises = new List<ExerciseSet>()
-
-        //    };
-        //    user.Programs.Add(program);
-        //    await SaveProgram(program, myTrainingPrograms);
-        //    await users.ReplaceOneAsync(x => x.Id == Person.Id, user);
-        //    await App.Current.MainPage.DisplayAlert("Success", "You've created " + Name, "Continue");
-
-
-        //}
-
-        
-
-
-
-        private static async Task SaveProgram(TrainingProgram program, IMongoCollection<TrainingProgram> myTrainingPrograms)
-        {
-            await myTrainingPrograms.InsertOneAsync(program);
-        }
-
         [RelayCommand]
         public void ChooseMuscle(string muscle)
         {
