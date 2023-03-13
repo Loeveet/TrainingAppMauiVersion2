@@ -9,7 +9,7 @@
             HorizontalOptions="Center">
             <Grid 
                 ColumnDefinitions="200, 200"
-                RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto, auto">
+                RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto">
 
                 <Label
                     Grid.ColumnSpan="2"
@@ -48,32 +48,21 @@
                     Grid.Row="4"
                     Grid.Column="1"
                     Placeholder="Nr of repetitions"/>
-                
+
                 <Button
                     Grid.Row="5"
                     Grid.ColumnSpan="2"
                     Text="Create set and add to training program"
                     Clicked="CreateSet"/>
-                
-                <Entry
-                    x:Name="NewProgramName"
-                    Grid.Row="6"
-                    Placeholder="Enter name for program"/>
-                
+
                 <Button
                     Grid.Row="6"
-                    Grid.Column="1"
-                    Text="Create program"
-                    Clicked="AddProgramToUser"/>
-                
-                <Button
-                    Grid.Row="7"
                     Grid.ColumnSpan="2"
-                    Text="Check chosen exercises"
+                    Text="Check and create program"
                     Clicked="OnClickedCurrentSetList"/>
                 
                 <Button
-                    Grid.Row="8"
+                    Grid.Row="7"
                     Grid.ColumnSpan="2"
                     Text="Back"
                     Clicked="OnClickedBack"/>

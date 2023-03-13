@@ -9,8 +9,8 @@ namespace TrainingAppMauiVersion2.Views;
 public partial class ExerciseDetailsPage : ContentPage
 {
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
-    ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
     NewTrainingProgram newTrainingProgram = NewTrainingProgram.GetInstansOfListOfSets();
+    ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
     public ExerciseDetailsPage()
     {
         InitializeComponent();
@@ -52,21 +52,6 @@ public partial class ExerciseDetailsPage : ContentPage
     {
         newTrainingProgram.AddSetToList(exerciseSet);
 
-    }
-    private async void AddProgramToUser(object sender, EventArgs e)
-    {
-        var users = await Connections.Connection.UserCollection();
-
-        TrainingProgram trainingProgram = new TrainingProgram()
-        {
-            Id = Guid.NewGuid(),
-            Name = NewProgramName.Text,
-            Exercises = newTrainingProgram.GetListOfSets()
-        };
-        loggedInUser.GetLoggedInPerson().Programs.Add(trainingProgram);
-        await users.ReplaceOneAsync(x => x.Id == loggedInUser.GetLoggedInPerson().Id, loggedInUser.GetLoggedInPerson());
-        await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
-        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
     }
 
     private async void OnClickedBack(object sender, EventArgs e)

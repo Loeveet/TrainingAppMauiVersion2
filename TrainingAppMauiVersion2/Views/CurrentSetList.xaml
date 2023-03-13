@@ -7,34 +7,34 @@
              Title="CurrentSetList"
              NavigationPage.HasBackButton="False">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout
+            HorizontalOptions="Center">
             <Label
-                    Text="{Binding NrOfSets, StringFormat='Nr of sets added to program: {0}'}"
-                    Grid.Column="{Binding OffSetButtons}"
+                    Text="{Binding NrOfSets, StringFormat='Number of sets added to program: {0}'}"
                     WidthRequest="220"
                     HorizontalOptions="Center"/>
             <Grid
                 RowDefinitions="auto, auto, auto, auto"
-                ColumnDefinitions="300, 150, 150, 210, 100, 100">
+                ColumnDefinitions="260, 70, 70, 60, auto">
 
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0" Grid.Row="1">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding Exercise.Name}" FontAttributes="Bold"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1" Grid.Row="1">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Label Text="{Binding Repetitions, StringFormat='{0} reps'}"/>
+                            <Label Text="{Binding Exercise.Name}" FontAttributes="Bold" HorizontalOptions="Start"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="2" Grid.Row="1">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding ChoosenWeight, StringFormat='Chosen weight {0} kg'}"/>
+                            <Label Text="{Binding Repetitions, StringFormat='{0} reps'}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1" Grid.Row="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding ChoosenWeight, StringFormat='{0} kg'}"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -69,8 +69,18 @@
             <Button
                 Text="Back"
                 Clicked="OnClickedBack"
-                MaximumWidthRequest="220"/>
-            
+                WidthRequest="220"/>
+
+
+            <Entry
+                x:Name="NewProgramName"
+                Placeholder="Enter name for program"
+                WidthRequest="220"/>
+
+            <Button
+                Text="Create program"
+                Clicked="AddProgramToUser"
+                WidthRequest="220"/>
             <Button
             Text="Log out"
             Clicked="OnClickedLogOut"

@@ -12,7 +12,7 @@ public partial class RegisterPage : ContentPage
         BindingContext = new RegisterPageViewModel();
 
     }
-    public async void OnBackClicked(object sender, EventArgs e)
+    private async void OnBackClicked(object sender, EventArgs e)
     {
         inputs.SetIncorrectWeight(true);
         inputs.SetUserNameTaken(true);
