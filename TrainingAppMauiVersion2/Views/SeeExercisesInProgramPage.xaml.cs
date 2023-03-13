@@ -18,15 +18,11 @@ public partial class SeeExercisesInProgramPage : ContentPage
 
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        BindingContext = new SeeExercisesInProgramViewModel();
-        //if (!pageStarted)
-        //{
-        //    pageStarted = true;
-        //}
-    }
+    //protected override void OnAppearing()
+    //{
+    //    base.OnAppearing();
+    //    BindingContext = new SeeExercisesInProgramViewModel();
+    //}
 
 
     private async void DeleteSetFromTrainingProgram(object sender, SelectedItemChangedEventArgs e)

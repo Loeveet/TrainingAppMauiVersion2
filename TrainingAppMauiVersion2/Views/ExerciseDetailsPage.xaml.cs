@@ -43,7 +43,7 @@ public partial class ExerciseDetailsPage : ContentPage
             AddSetToProgram(exerciseSet);
             App.Current.MainPage.DisplayAlert("Success", "Set successfully created", "Continue");
         }
-        catch (Exception ex)
+        catch 
         {
             App.Current.MainPage.DisplayAlert("Fail", "Try it again, dummy", "Try again");
 
@@ -70,7 +70,8 @@ public partial class ExerciseDetailsPage : ContentPage
             Name = NewProgramName.Text,
             Exercises = newTrainingProgram.GetListOfSets()
         };
-        user.Programs.Add(trainingProgram);    
+        user.Programs.Add(trainingProgram);
+        newTrainingProgram.ResetList();
         await users.ReplaceOneAsync(x => x.Id == user.Id, user);
         await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());
@@ -78,7 +79,7 @@ public partial class ExerciseDetailsPage : ContentPage
 
     private async void OnClickedBack(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new ChooseExercisePage());
     }
 
     private async void OnClickedCurrentSetList(object sender, EventArgs e)

@@ -6,6 +6,8 @@ namespace TrainingAppMauiVersion2.Views;
 public partial class CurrentSetList : ContentPage
 {
     NewTrainingProgram newTrainingProgram = NewTrainingProgram.GetInstansOfListOfSets();
+    ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
+
     public CurrentSetList()
     {
         InitializeComponent();
@@ -14,7 +16,9 @@ public partial class CurrentSetList : ContentPage
 
     private async void OnClickedBack(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ExerciseDetailsPage());
+        var page = new ExerciseDetailsPage();
+        page.BindingContext = chosenExercise.GetChosenExercise();
+        await Navigation.PushAsync(page);
     }
 
     private async void DeleteSet(object sender, SelectedItemChangedEventArgs e)

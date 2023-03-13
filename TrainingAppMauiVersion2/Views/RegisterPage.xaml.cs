@@ -12,22 +12,22 @@ public partial class RegisterPage : ContentPage
         BindingContext = new RegisterPageViewModel();
 
     }
-    public void OnBackClicked(object sender, EventArgs e)
+    public async void OnBackClicked(object sender, EventArgs e)
     {
         inputs.SetIncorrectWeight(true);
         inputs.SetUserNameTaken(true);
-        Navigation.PopToRootAsync();
+        await Navigation.PopToRootAsync();
     }
 
-    private void OnRegisterClicked(object sender, EventArgs e)
+    private async void OnRegisterClicked(object sender, EventArgs e)
     {
         if (inputs.GetUserNameTaken() == string.Empty && inputs.GetIncorrectWeight() == string.Empty)
         {
-            Navigation.PushAsync(new MainPage());
+            await Navigation.PopToRootAsync();
         }
         else
         {
-            Navigation.PushAsync(new RegisterPage());
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }

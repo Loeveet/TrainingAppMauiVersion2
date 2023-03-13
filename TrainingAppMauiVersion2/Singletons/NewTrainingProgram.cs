@@ -40,5 +40,9 @@ namespace TrainingAppMauiVersion2.Singletons
         {
             listOfExerciseSet.Remove(exerciseSet);
         }
+        public void ResetList()
+        {
+            listOfExerciseSet.Clear();
+        }
     }
 }

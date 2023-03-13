@@ -33,5 +33,6 @@ namespace TrainingAppMauiVersion2.Singletons
         {
             return chosenExercise;
         }
+
     }
 }

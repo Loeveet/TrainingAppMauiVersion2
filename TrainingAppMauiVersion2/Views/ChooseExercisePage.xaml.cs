@@ -1,3 +1,4 @@
+using MongoDB.Driver.Core.Authentication;
 using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.Singletons;
 
@@ -5,7 +6,6 @@ namespace TrainingAppMauiVersion2.Views;
 
 public partial class ChooseExercisePage : ContentPage
 {
-    LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
     ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
 
     public ChooseExercisePage()
@@ -27,6 +27,6 @@ public partial class ChooseExercisePage : ContentPage
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await Navigation.PushAsync(new CreateTrainingProgramPage());
     }
 }
