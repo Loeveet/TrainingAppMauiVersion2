@@ -29,4 +29,8 @@ public partial class ChooseExercisePage : ContentPage
     {
         await Navigation.PushAsync(new CreateTrainingProgramPage());
     }
+    private async void OnClickedLogOut(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 }

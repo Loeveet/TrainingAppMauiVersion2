@@ -9,15 +9,17 @@
              NavigationPage.HasBackButton="False">
     <ScrollView
         Orientation="Both">
-        <Grid
+        <VerticalStackLayout
+            HorizontalOptions="Center">
+            <Grid
             ColumnDefinitions="150, 50, 150, 50, 150, 50"
             RowDefinitions="50, auto, auto, auto, auto, *">
-            <Label
+                <Label
                 Grid.ColumnSpan="6"
                 VerticalOptions="Center"
                 FontSize="20"
                 Text="New training program"/>
-            <Label
+                <Label
                 Text="{Binding ChosenMuscle}"
                 FontSize="20"
                 FontAttributes="Bold"
@@ -26,7 +28,7 @@
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
-            <Label
+                <Label
                 Text="{Binding ChosenDifficulty}"
                 FontSize="20"
                 FontAttributes="Bold"
@@ -35,7 +37,7 @@
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
-            <Label
+                <Label
                 Text="{Binding ChosenType}"
                 FontSize="20"
                 FontAttributes="Bold"
@@ -44,22 +46,22 @@
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
-            <CollectionView
+                <CollectionView
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="2"
                 ItemsSource="{Binding Muscles}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
                             Margin="3">
-                            <Label
+                                <Label
                                 Grid.Column="0"
                                 Text="{Binding .}"
                                 FontSize="16"
                                 HorizontalOptions="Center"
                                 TextColor="Black"/>
-                            <Button
+                                <Button
                                 Opacity="0"
                                 BorderColor="White"
                                 BackgroundColor="White"
@@ -70,27 +72,27 @@
                                 Path=ChooseMuscleCommand}"
                                 CommandParameter="{Binding .}"
                                 Clicked="ReloadPage"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <CollectionView
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Grid.Row="2"
                 ItemsSource="{Binding DifficultyLevels}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
                             Margin="3">
-                            <Label
+                                <Label
                                 Grid.Column="0"
                                 Text="{Binding .}"
                                 FontSize="16"
                                 HorizontalOptions="Center"
                                 BackgroundColor="White"
                                 TextColor="Black"/>
-                            <Button
+                                <Button
                                 Opacity="0"
                                 BorderColor="White"
                                 BorderWidth="1"
@@ -100,27 +102,27 @@
                                 Path=ChooseDifficultyCommand}"
                                 CommandParameter="{Binding .}"
                                 Clicked="ReloadPage"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <CollectionView
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
                 Grid.Column="4"
                 Grid.ColumnSpan="2"
                 Grid.Row="2"                
                 ItemsSource="{Binding TypesOfExercices}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
                             Margin="3">
-                            <Label
+                                <Label
                                 Grid.Column="0"
                                 Text="{Binding .}"
                                 FontSize="16"
                                 HorizontalOptions="Center"
                                 BackgroundColor="White"
                                 TextColor="Black"/>
-                            <Button
+                                <Button
                                 Opacity="0"
                                 BorderColor="White"
                                 BorderWidth="1"
@@ -131,11 +133,11 @@
                                 Path=ChooseTypeCommand}"
                                 CommandParameter="{Binding .}"
                                 Clicked="ReloadPage"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button
                 FontAttributes="Bold"
                 FontSize="16"
                 Grid.Row="3"
@@ -147,7 +149,7 @@
                 Text="Choose all"
                 Command="{Binding ChooseMuscleCommand}"
                 Clicked="ReloadPage"/>
-            <Button
+                <Button
                 FontAttributes="Bold"
                 FontSize="16"                
                 Grid.Row="3"
@@ -159,7 +161,7 @@
                 Text="Choose all"
                 Command="{Binding ChooseDifficultyCommand}"
                 Clicked="ReloadPage"/>
-            <Button
+                <Button
                 FontAttributes="Bold"
                 FontSize="16"                
                 Grid.Row="3"
@@ -171,17 +173,20 @@
                 Text="Choose all"
                 Command="{Binding ChooseTypeCommand}"
                 Clicked="ReloadPage"/>
+            </Grid>
             <Button
-                Grid.Row="4"
-                Grid.ColumnSpan="6"               
                 Text="Forward"
-                Clicked="OnClickedChooseExercise"/>
-            <Button
-                Grid.Row="5"
-                Grid.ColumnSpan="6"               
+                Clicked="OnClickedChooseExercise"
+                WidthRequest="220"/>
+            <Button         
                 Text="Back"
-                Clicked="OnBackClicked"/>
-        </Grid>
+                Clicked="OnBackClicked"
+                WidthRequest="220"/>
+            <Button
+                Text="Log out"
+                Clicked="OnClickedLogOut"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
 
     </ScrollView>
 </ContentPage>

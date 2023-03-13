@@ -34,6 +34,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         string userNameTaken;
         [ObservableProperty]
         string correctWeight;
+        
 
         public bool UserNameOk { get; set; }
         public bool WeightOk { get; set; }
@@ -100,7 +101,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         private double CheckWeight()
         {
-            var w = HelperMethods.TryParseToDouble(Weight);
+            var w = HelperMethods.TryParseToDouble(Weight.Replace('.', ','));
             if (w == 0)
             {
                 wrongInput.SetIncorrectWeight(false);

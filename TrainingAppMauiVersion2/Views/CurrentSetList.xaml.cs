@@ -30,5 +30,9 @@ public partial class CurrentSetList : ContentPage
             await Navigation.PushAsync(page);
         }
     }
+    private async void OnClickedLogOut(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 
 }

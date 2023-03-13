@@ -33,9 +33,8 @@ public partial class ExistingTrainingProgramsPage : ContentPage
         }
     }
 
-    private async void OnClickedLoggedOut(object sender, EventArgs e)
+    private async void OnClickedLogOut(object sender, EventArgs e)
     {
-        loggedInUser.SetLoggedInPerson(null);
         await Navigation.PopToRootAsync();
     }
 
@@ -52,4 +51,6 @@ public partial class ExistingTrainingProgramsPage : ContentPage
         }
 
     }
+
+
 }

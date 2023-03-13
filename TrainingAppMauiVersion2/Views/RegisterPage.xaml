@@ -21,34 +21,27 @@
                 FontSize="Header"/>
 
             <Entry
+                
+                MaximumWidthRequest="220"
                 Text="{Binding UserName}"
                 Placeholder="Username"/>
 
             <Entry
+                MaximumWidthRequest="220"                
                 Text="{Binding PassWord}"
                 Placeholder="Password"
                 IsPassword="True"/>
 
             <Entry
+                MaximumWidthRequest="220"                
                 Text="{Binding Name}"
                 Placeholder="Name"/>
             
             <Entry
+                MaximumWidthRequest="220"                
                 Text="{Binding Weight}"
                 Placeholder="Weight"/>
 
-            <!--<Entry
-                Text="{Binding BirthDate}"
-                Placeholder="Date of birth (yyyy-mm-dd)"/>
-
-
-            <Entry
-                Text="{Binding Height}"
-                Placeholder="Height in cm"/>
-
-            <Entry
-                Text="{Binding Email}"
-                Placeholder="Email"/>-->
             <Label
                 Text="{Binding UserNameTaken}"
                 TextColor="Red"
@@ -59,12 +52,19 @@
                 HorizontalOptions="Center"/>
 
             <Button
+                MaximumWidthRequest="220"
                 Command="{Binding ClickedRegisterButtonCommand}"
                 Text="Register"
                 Clicked="OnRegisterClicked"/>
             <Button
+                MaximumWidthRequest="220"               
                 Text="Back"
                 Clicked="OnBackClicked"/>
+            
+            <Button
+            Text="Log out"
+            Clicked="OnClickedLogOut"
+            HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>

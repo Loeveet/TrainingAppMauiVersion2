@@ -86,4 +86,9 @@ public partial class ExerciseDetailsPage : ContentPage
     {
         await Navigation.PushAsync(new CurrentSetList());
     }
+
+    private async void OnClickedLogOut(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 }

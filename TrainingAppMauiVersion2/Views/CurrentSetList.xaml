@@ -6,58 +6,70 @@
              x:DataType="viewmodel:CurrentSetListPageViewModel"
              Title="CurrentSetList"
              NavigationPage.HasBackButton="False">
-    <VerticalStackLayout>
-        <Grid
-                RowDefinitions="auto, 50, 50, 50"
+    <ScrollView
+        Orientation="Both">
+        <VerticalStackLayout
+            HorizontalOptions="Center">
+            <Grid
+                RowDefinitions="auto"
                 ColumnDefinitions="300, 150, 150, 210, 100, 100">
-            <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Exercise.Name}" FontAttributes="Bold"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="3">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding ChoosenWeight, StringFormat='Chosen weight {0} kg'}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Repetitions, StringFormat='{0} reps'}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="2">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding CaloriesBurned, StringFormat='{0} kcal'}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <ListView 
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Exercise.Name}" FontAttributes="Bold"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Repetitions, StringFormat='{0} reps'}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding ChoosenWeight, StringFormat='Chosen weight {0} kg'}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="3">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding CaloriesBurned, StringFormat='{0} kcal'}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <ListView 
                     ItemsSource="{Binding Exercises}" 
                     ItemSelected="DeleteSet"
                     Grid.Column="4">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
                                     Margin="10">
-                                <StackLayout>
-                                    <Label Text="Delete set"/>
-                                </StackLayout>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-        <Button
-            Text="Back"
-            Clicked="OnClickedBack"/>
-    </VerticalStackLayout>
+                                    <StackLayout>
+                                        <Label Text="Delete set"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Button
+                Text="Back"
+                Clicked="OnClickedBack"
+                WidthRequest="220"
+                HorizontalOptions="Center"/>
+
+            <Button
+            Text="Log out"
+            Clicked="OnClickedLogOut"
+            HorizontalOptions="Center"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

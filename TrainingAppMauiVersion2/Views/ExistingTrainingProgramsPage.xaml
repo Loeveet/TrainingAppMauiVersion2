@@ -64,6 +64,7 @@
                 Clicked="OnClickedCreateTrainingProgramPage"/>
         <Button
             Text="Log out"
-            Clicked="OnClickedLoggedOut"/>
+            Clicked="OnClickedLogOut"
+            HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

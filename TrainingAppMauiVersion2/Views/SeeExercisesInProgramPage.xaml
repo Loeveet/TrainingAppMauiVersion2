@@ -90,6 +90,10 @@
                     Text="Back"
                     Clicked="OnBackClicked"/>
             </Grid>
+            <Button
+            Text="Log out"
+            Clicked="OnClickedLogOut"
+            HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

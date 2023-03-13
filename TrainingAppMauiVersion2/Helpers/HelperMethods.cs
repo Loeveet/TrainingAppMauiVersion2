@@ -31,7 +31,7 @@ namespace TrainingAppMauiVersion2.NewFolder
         }
         public static string FixWordsForApi(string word)
         {
-            if (word == "" || word == null) return "All";
+            if (word == string.Empty || word == null) return "All";
             string newWord = word.ToLower().Replace(' ', '_');
             return newWord;
         }
@@ -47,7 +47,6 @@ namespace TrainingAppMauiVersion2.NewFolder
             if (!double.TryParse(input, out id))
             {
                 return 0;
-                //App.Current.MainPage.DisplayAlert("Failed", "Use numbers while input a number", "Try again");
             }
             return id;
         }

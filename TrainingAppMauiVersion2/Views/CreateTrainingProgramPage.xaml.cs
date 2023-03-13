@@ -31,4 +31,8 @@ public partial class CreateTrainingProgramPage : ContentPage
         chosenParameters.SetChosenTypeOfExercise(string.Empty);
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());
     }
+    private async void OnClickedLogOut(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 }
