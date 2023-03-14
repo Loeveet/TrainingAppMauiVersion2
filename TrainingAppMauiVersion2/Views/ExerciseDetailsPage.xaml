@@ -36,7 +36,8 @@
                     Grid.ColumnSpan="2"
                     Text="{Binding Instructions, StringFormat='Instructions: {0}'}"
                     FontSize="20"
-                    HorizontalOptions="Start"/>
+                    HorizontalOptions="Start"
+                    Scale="0.9"/>
 
                 <Entry
                     x:Name="Ws"
