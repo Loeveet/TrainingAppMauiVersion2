@@ -13,6 +13,10 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class CurrentSetListPageViewModel : ObservableObject
     {
         NewTrainingProgram program = NewTrainingProgram.GetInstansOfListOfSets();
+        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
+
+        [ObservableProperty]
+        Person user;
 
         [ObservableProperty]
         ObservableCollection<ExerciseSet> exercises;
@@ -37,6 +41,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public CurrentSetListPageViewModel()
         {
+            User = getLoggedInUser.GetLoggedInPerson();
             NrOfSets = program.GetListOfSets().Count();
             OffSetButtons = SetButtonOffSet(); //TODO: vet inte om jag ska använda
 

@@ -20,13 +20,13 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class CreateTrainingProgramViewModel : ObservableObject
     {
 
-        LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
 
         ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
 
 
         [ObservableProperty]
-        Person person;
+        Person user;
 
         [ObservableProperty]
         string name;
@@ -64,7 +64,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public CreateTrainingProgramViewModel()
         {
-            Person = user.GetLoggedInPerson();
+            User = getLoggedInUser.GetLoggedInPerson();
             ChosenMuscle = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenMuscle());
             ChosenDifficulty = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenDifficulty());
             ChosenType = HelperMethods.CapitalizeFirstLetter(chosenItem.GetChosenTypeOfExercise());

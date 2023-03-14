@@ -5,7 +5,7 @@
              x:Class="TrainingAppMauiVersion2.Views.CreateTrainingProgramPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:CreateTrainingProgramViewModel"
-             Title="CreateTrainingProgramPage"
+             Title="{Binding User.Name}"
              NavigationPage.HasBackButton="False">
     <ScrollView
         Orientation="Both">

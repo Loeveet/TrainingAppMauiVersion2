@@ -4,7 +4,7 @@
              x:Class="TrainingAppMauiVersion2.Views.ChooseExercisePage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ChooseExerciseViewModel"
-             Title="ChooseExercisePage"
+             Title="{Binding User.Name}"
              NavigationPage.HasBackButton="False">
     <ScrollView>
         <VerticalStackLayout

@@ -4,7 +4,7 @@
              x:Class="TrainingAppMauiVersion2.Views.SeeExercisesInProgramPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:SeeExercisesInProgramViewModel"
-             Title="SeeExercisesInProgramPage"
+             Title="{Binding User.Name}"
              NavigationPage.HasBackButton="False">
     <ScrollView>
         <VerticalStackLayout>

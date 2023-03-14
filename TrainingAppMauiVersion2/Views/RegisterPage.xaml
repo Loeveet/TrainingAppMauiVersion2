@@ -5,7 +5,7 @@
              x:Class="TrainingAppMauiVersion2.Views.RegisterPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:RegisterPageViewModel"
-             Title="RegisterPage"
+             Title="Register Page"
              NavigationPage.HasBackButton="False">
     <ScrollView
         Orientation="Both">
@@ -60,11 +60,6 @@
                 MaximumWidthRequest="220"               
                 Text="Back"
                 Clicked="OnBackClicked"/>
-            
-            <Button
-            Text="Log out"
-            Clicked="OnClickedLogOut"
-            HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>

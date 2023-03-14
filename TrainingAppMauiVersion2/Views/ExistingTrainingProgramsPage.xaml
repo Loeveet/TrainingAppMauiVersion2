@@ -6,67 +6,66 @@
              x:DataType="viewmodel:ExistingTrainingProgramsViewModel"
              Title="{Binding User.Name, StringFormat='Welcome {0}'}"
              NavigationPage.HasBackButton="False">
-    <VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
 
-        <Label 
-            Text="{Binding User.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
+            <Label 
             Text="{Binding TrainingPrograms.Count, StringFormat='Number of personal training programs: {0}'}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <VerticalStackLayout
+            HorizontalOptions="Center"
+                FontSize="20"/>
+            <VerticalStackLayout
             HorizontalOptions="Center">
-            <Grid ColumnDefinitions="auto, auto">
-                <ListView
+                <Grid ColumnDefinitions="auto, auto">
+                    <ListView
                  ItemsSource="{Binding TrainingPrograms}"
                 ItemSelected="SeeExercisesInProgram"
                     Grid.Column="0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid 
                                 Padding="5">
-                                    <Frame>
-                                        <Label                                          
+                                        <Frame>
+                                            <Label                                          
                                         Text="{Binding Name}"
                                         FontSize="20"/>
-                                    </Frame>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ListView
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView
                  ItemsSource="{Binding TrainingPrograms}"
                  ItemSelected="Delete"
                     Grid.Column="2">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid 
                                 Padding="5">
-                                    <Frame>
+                                        <Frame>
 
-                                        <Label
+                                            <Label
                                         Text="Delete"
                                         FontSize="20"/>
-                                    </Frame>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </VerticalStackLayout>
-        <Button
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </VerticalStackLayout>
+            <Button
             HorizontalOptions="Center"            
             Text="Create training programs"
             Clicked="OnClickedCreateTrainingProgramPage"/>
-        <Button
+            <Button
             Text="Log out"
             Clicked="OnClickedLogOut"
             HorizontalOptions="Center"/>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

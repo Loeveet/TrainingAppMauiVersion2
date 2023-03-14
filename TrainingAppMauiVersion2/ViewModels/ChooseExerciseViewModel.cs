@@ -15,6 +15,10 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class ChooseExerciseViewModel : ObservableObject
     {
         ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
+        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
+
+        [ObservableProperty]
+        Person user;
 
         [ObservableProperty]
         string name;
@@ -36,6 +40,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public ChooseExerciseViewModel()
         {
+            User = getLoggedInUser.GetLoggedInPerson();
             Exercises = new ObservableCollection<Exercise>();
             ChosenMuscle = chosenItem.GetChosenMuscle();
             GetTheExercises();

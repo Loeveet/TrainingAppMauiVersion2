@@ -13,6 +13,10 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class SeeExercisesInProgramViewModel : ObservableObject
     {
         ChosenTrainingProgram chosenTrainingProgram = ChosenTrainingProgram.GetInstansOfChosenTrainingProgram();
+        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
+
+        [ObservableProperty]
+        Person user;
 
         [ObservableProperty]
         TrainingProgram trainingProgram;
@@ -40,6 +44,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public SeeExercisesInProgramViewModel()
         {
+            User = getLoggedInUser.GetLoggedInPerson();
             Exercises = new ObservableCollection<ExerciseSet>();
             TrainingProgram = new TrainingProgram();
             TrainingProgram = chosenTrainingProgram.GetChosenTrainingProgram();

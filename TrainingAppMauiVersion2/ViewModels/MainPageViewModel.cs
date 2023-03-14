@@ -15,7 +15,7 @@ namespace TrainingAppMauiVersion2.ViewModels
     internal partial class MainPageViewModel : ObservableObject
     {
         WrongInput wrongInput = WrongInput.GetInstansOfInputs();
-        LoggedInPerson user = LoggedInPerson.GetInstansOfLoggedInPerson();
+        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
 
         [ObservableProperty]
         string input;
@@ -29,7 +29,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public MainPageViewModel()
         {
-            user.SetLoggedInPerson(null);
+            getLoggedInUser.SetLoggedInPerson(null);
             Input = wrongInput.GetWrongInputLogInPage();
         }
 
