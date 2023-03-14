@@ -42,7 +42,7 @@ public partial class ExerciseDetailsPage : ContentPage
         }
         catch 
         {
-            App.Current.MainPage.DisplayAlert("Fail", "Try it again, dummy", "Try again");
+            App.Current.MainPage.DisplayAlert("Fail", "Only numbers", "Try again");
 
         }
 
