@@ -4,7 +4,7 @@
              x:Class="TrainingAppMauiVersion2.Views.ExistingTrainingProgramsPage"
              xmlns:viewmodel="clr-namespace:TrainingAppMauiVersion2.ViewModels"
              x:DataType="viewmodel:ExistingTrainingProgramsViewModel"
-             Title="{Binding User.Name, StringFormat='Welcome {0}'}"
+             Title="{Binding User.Name}"
              NavigationPage.HasBackButton="False">
     <ScrollView>
         <VerticalStackLayout>
