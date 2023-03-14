@@ -19,7 +19,7 @@
                 Grid.ColumnSpan="6"
                 VerticalOptions="Center"
                 FontSize="20"
-                Text="New training program"/>
+                Text="Choose parameters for a more precise search"/>
                 <Label
                 Text="{Binding ChosenMuscle}"
                 FontSize="20"

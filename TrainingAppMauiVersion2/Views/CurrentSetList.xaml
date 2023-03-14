@@ -11,8 +11,9 @@
             HorizontalOptions="Center">
             <Label
                     Text="{Binding NrOfSets, StringFormat='Number of sets added to program: {0}'}"
-                    WidthRequest="220"
-                    HorizontalOptions="Center"/>
+                    WidthRequest="400"
+                    HorizontalOptions="Center"
+                    FontSize="20"/>
             <Grid
                 RowDefinitions="auto, auto, auto, auto"
                 ColumnDefinitions="260, 70, 70, 60, auto">

@@ -12,14 +12,6 @@ namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class ExerciseDetailsViewModel : ObservableObject
     {
-        LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
 
-        [ObservableProperty]
-        Person user;
-
-        public ExerciseDetailsViewModel()
-        {
-            User = getLoggedInUser.GetLoggedInPerson();
-        }
     }
 }

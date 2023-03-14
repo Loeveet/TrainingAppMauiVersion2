@@ -25,15 +25,6 @@ namespace TrainingAppMauiVersion2.Connections
 
         }
 
-        //public static async Task<IMongoCollection<TrainingProgram>> TrainingProgramCollection()
-        //{
-        //    var settings = MongoClientSettings.FromConnectionString("mongodb://RobinLiliegren:robin88@ac-ypkinxo-shard-00-00.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-01.cst2dyy.mongodb.net:27017,ac-ypkinxo-shard-00-02.cst2dyy.mongodb.net:27017/?ssl=true&replicaSet=atlas-fch61g-shard-0&authSource=admin&retryWrites=true&w=majority");
-        //    var client = new MongoClient(settings);
-        //    var database = client.GetDatabase("TrainingAppPerson");
-        //    var myTrainingPrograms = database.GetCollection<TrainingProgram>("MyPrograms");
-        //    return myTrainingPrograms;
-        //}
-
         public static async Task<ObservableCollection<Exercise>> GetExercices()
         {
             ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();

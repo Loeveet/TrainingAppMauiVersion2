@@ -7,10 +7,11 @@
              Title="{Binding User.Name}"
              NavigationPage.HasBackButton="False">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout
+            HorizontalOptions="Center">
             <Grid
-                RowDefinitions="auto, 50, 50, 50"
-                ColumnDefinitions="300, 150, 150, 210, 100, 100">
+                RowDefinitions="auto, 50, 50"
+                ColumnDefinitions="260, 70, 70, 60, auto">
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -18,21 +19,21 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="3">
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding ChoosenWeight, StringFormat='Chosen weight {0} kg'}"/>
+                            <Label Text="{Binding ChoosenWeight, StringFormat='{0} kg'}"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="1">
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="2">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Label Text="{Binding Repetitions, StringFormat='{0} reps'}"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="2">
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Label Text="{Binding CaloriesBurned, StringFormat='{0} kcal'}"/>

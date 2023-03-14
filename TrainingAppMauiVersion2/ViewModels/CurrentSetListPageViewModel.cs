@@ -43,7 +43,7 @@ namespace TrainingAppMauiVersion2.ViewModels
         {
             User = getLoggedInUser.GetLoggedInPerson();
             NrOfSets = program.GetListOfSets().Count();
-            OffSetButtons = SetButtonOffSet(); //TODO: vet inte om jag ska använda
+            OffSetButtons = SetButtonOffSet();
 
             Exercises = new ObservableCollection<ExerciseSet>();
             foreach (var x in program.GetListOfSets())
