@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ILoginFacade _loginFacade = new LoginFacade();
-    readonly WrongInput input = WrongInput.GetInstansOfInputs();
+    WrongInput input = WrongInput.GetInstansOfInputs();
 
     public MainPage()
     {
