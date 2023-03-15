@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
     ILoginFacade _loginFacade = new LoginFacade();
-    WrongInput wrongInput = WrongInput.GetInstansOfInputs();
+    readonly WrongInput input = WrongInput.GetInstansOfInputs();
 
     public MainPage()
     {
@@ -39,12 +39,12 @@ public partial class MainPage : ContentPage
             await Navigation.PushAsync(new Views.ExistingTrainingProgramsPage());
             UserName.Text = string.Empty;
             PassWord.Text = string.Empty;
-            wrongInput.SetWrongInputLogInPage(true);
+            input.SetWrongInputLogInPage(true);
             return;
         }
         UserName.Text = string.Empty;
         PassWord.Text = string.Empty;
-        wrongInput.SetWrongInputLogInPage(false);
+        input.SetWrongInputLogInPage(false);
         await Navigation.PushAsync(new MainPage());
 
 

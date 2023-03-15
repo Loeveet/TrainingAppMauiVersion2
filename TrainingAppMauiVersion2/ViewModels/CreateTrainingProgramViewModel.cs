@@ -21,9 +21,7 @@ namespace TrainingAppMauiVersion2.ViewModels
     {
 
         LoggedInPerson getLoggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
-
         ChosenParameters chosenItem = ChosenParameters.GetInstansOfChosenParameters();
-
 
         [ObservableProperty]
         Person user;
