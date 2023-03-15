@@ -10,7 +10,7 @@
         <VerticalStackLayout
             HorizontalOptions="Center">
             <Grid
-                RowDefinitions="auto, 50, 50"
+                RowDefinitions="auto, 50, 50, 50"
                 ColumnDefinitions="260, 70, 70, 60, auto">
                 <CollectionView ItemsSource="{Binding Exercises}" Grid.Column="0">
                     <CollectionView.ItemTemplate>
@@ -67,6 +67,11 @@
                     Grid.Row="2"
                     Grid.ColumnSpan="5"
                     Text="{Binding TotalWeight, StringFormat='Total kilograms of lifted weights: {0} kg'}"
+                    FontSize="20"/>
+                <Label
+                    Grid.Row="3"
+                    Grid.ColumnSpan="5"
+                    Text="{Binding TotalTime, StringFormat='Estimated time: {0} min'}"
                     FontSize="20"/>
             </Grid>
             <Button

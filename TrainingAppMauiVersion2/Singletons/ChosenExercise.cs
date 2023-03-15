@@ -8,7 +8,10 @@ using TrainingAppMauiVersion2.Models;
 namespace TrainingAppMauiVersion2.Singletons
 {
     class ChosenExercise
-    {
+    {/*
+      Jag skriver bara en kommentar här, men jag har, som man kan se, en mapp med olika Singletons. De har gjort min resa
+      en aning lättare, då de underlättat för mig med variabler jag vill kunna nå på olika sidor. 
+      */
         private Exercise chosenExercise;
 
         private static readonly ChosenExercise _instance = new ChosenExercise();

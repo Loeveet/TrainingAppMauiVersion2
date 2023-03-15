@@ -25,10 +25,15 @@ public partial class MainPage : ContentPage
 
     }
 
+    /*
+     Använder facade för inloggning här under. Tyvärr så är det bara en check i databasen för att se om personen finns,
+     men är det så att man bygger vidare appen så är det lätt att lägga till de parameterna som vi gick igenom på 
+     lektionen, för att se om personen har behörighet samt har betalat. 
+     */
     private async void OnClickedLogIn(object sender, EventArgs e)
     {
 
-        if (_loginFacade.CanLogIn(UserName.Text, PassWord.Text))  //Facade för inlogg
+        if (_loginFacade.CanLogIn(UserName.Text, PassWord.Text))
         {
             await DisplayAlert("Success", "Welcome " + loggedInUser.GetLoggedInPerson().Name, "Continue");
             await Navigation.PushAsync(new Views.ExistingTrainingProgramsPage());

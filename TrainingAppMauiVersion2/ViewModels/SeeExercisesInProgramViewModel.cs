@@ -41,6 +41,8 @@ namespace TrainingAppMauiVersion2.ViewModels
         int totalReps = 0;
         [ObservableProperty]
         int totalWeight = 0;
+        [ObservableProperty]
+        double totalTime = 0;
 
         public SeeExercisesInProgramViewModel()
         {
@@ -55,7 +57,7 @@ namespace TrainingAppMauiVersion2.ViewModels
                 TotalReps += set.Repetitions;
                 TotalWeight += set.ChoosenWeight;
             }
-            
+            TotalTime = ((TotalReps * 5) + (TrainingProgram.Exercises.Count * 120) - 120) / 60;
         }
     }
 }
