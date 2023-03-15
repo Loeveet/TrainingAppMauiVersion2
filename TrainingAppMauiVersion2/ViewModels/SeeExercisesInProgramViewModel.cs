@@ -57,7 +57,7 @@ namespace TrainingAppMauiVersion2.ViewModels
                 TotalReps += set.Repetitions;
                 TotalWeight += set.ChoosenWeight;
             }
-            TotalTime = ((TotalReps * 5) + (TrainingProgram.Exercises.Count * 120) - 120) / 60;
+            TotalTime = ((TotalReps * 5) + (TrainingProgram.Exercises.Count -1) * 120) / 60;
         }
     }
 }

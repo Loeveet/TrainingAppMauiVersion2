@@ -12,9 +12,11 @@ public partial class CurrentSetList : ContentPage
     NewTrainingProgram newTrainingProgram = NewTrainingProgram.GetInstansOfListOfSets();
     ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
+    Person user;
 
     public CurrentSetList()
     {
+        user = loggedInUser.GetLoggedInPerson();
         InitializeComponent();
         BindingContext = new ViewModels.CurrentSetListPageViewModel();
     }
@@ -43,7 +45,6 @@ public partial class CurrentSetList : ContentPage
     private async void AddProgramToUser(object sender, EventArgs e)
     {
         var users = await Connections.Connection.UserCollection();
-        var user = loggedInUser.GetLoggedInPerson();
 
         TrainingProgram trainingProgram = new TrainingProgram()
         {
