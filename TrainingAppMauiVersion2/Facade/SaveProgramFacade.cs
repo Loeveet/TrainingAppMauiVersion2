@@ -20,7 +20,7 @@ namespace TrainingAppMauiVersion2.Facade
         {
             _trySaveProgram = new TrySaveProgram();
         }
-        public bool CanSaveProgram(string programName, Models.Person user) //TODO: gör klart
+        public bool CanSaveProgram(string programName, Models.Person user)
         {
             if (_trySaveProgram.IsSaved(programName, user))
             {

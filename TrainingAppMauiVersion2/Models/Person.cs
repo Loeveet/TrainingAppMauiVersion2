@@ -21,5 +21,11 @@ namespace TrainingAppMauiVersion2.Models
             var users = await Connections.Connection.UserCollection();
             await users.ReplaceOneAsync(x => x.Id == user.Id, user);
         }
+
+        public static async void SaveUser(Person user)
+        {
+            var users = await Connections.Connection.UserCollection();
+            await users.InsertOneAsync(user);
+        }
     }
 }

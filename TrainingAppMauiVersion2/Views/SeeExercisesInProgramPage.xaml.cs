@@ -21,12 +21,11 @@ public partial class SeeExercisesInProgramPage : ContentPage
     private async void DeleteSetFromTrainingProgram(object sender, SelectedItemChangedEventArgs e)
     {
         var user = loggedInUser.GetLoggedInPerson();
-        var users = await Connections.Connection.UserCollection();
 
         if (((ListView)sender).SelectedItem is ExerciseSet set)
         {
             chosenTrainingProgram.DeleteSetFromProgram(set);
-            await users.ReplaceOneAsync(x => x.Id == user.Id, user);
+            Person.UpdateUser(user);
 
             var page = new SeeExercisesInProgramPage();
             await Navigation.PushAsync(page);

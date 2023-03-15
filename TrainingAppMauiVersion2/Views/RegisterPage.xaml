@@ -53,7 +53,7 @@
 
             <Button
                 MaximumWidthRequest="220"
-                Command="{Binding ClickedRegisterButtonCommand}"
+                Command="{Binding RegisterUserCommand}"
                 Text="Register"
                 Clicked="OnRegisterClicked"/>
             <Button

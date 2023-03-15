@@ -14,7 +14,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 {
     internal partial class RegisterPageViewModel : ObservableObject
     {
-        WrongInput wrongInput = WrongInput.GetInstansOfInputs();
+        WrongInput inputs = WrongInput.GetInstansOfInputs();
 
         [ObservableProperty]
         string userName;
@@ -41,16 +41,14 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         public RegisterPageViewModel()
         {
-            UserNameTaken = wrongInput.GetUserNameTaken();
-            CorrectWeight = wrongInput.GetIncorrectWeight();
+            UserNameTaken = inputs.GetUserNameTaken();
+            CorrectWeight = inputs.GetIncorrectWeight();
         }
 
         [RelayCommand]
-        public async void OnClickedRegisterButton()
+        public async void RegisterUser()
         {
-            var users = await Connections.Connection.UserCollection();
-
-            Person person = new Person()
+            Person user = new Person()
             {
                 Id = new Guid(),
                 UserName = await CheckUserName(UserName),
@@ -62,23 +60,17 @@ namespace TrainingAppMauiVersion2.ViewModels
 
             if (UserNameOk && WeightOk)
             {
-                await SaveUser(person, users);
+                Person.SaveUser(user);
                 await App.Current.MainPage.DisplayAlert("Success", "You are now registred as a new user", "Continue");
                 UserName = string.Empty;
                 PassWord = string.Empty;
                 Name = string.Empty;
                 Weight = string.Empty;
             }
-
-
         }
-        private static async Task SaveUser(Person person, IMongoCollection<Person> users)
-        {
-            await users.InsertOneAsync(person);
-        }
+
         private async Task<string> CheckUserName(string name)
         {
-            WrongInput userNameTaken = WrongInput.GetInstansOfInputs();
             if (name == null || name == string.Empty)
             {
                 return string.Empty;
@@ -89,12 +81,12 @@ namespace TrainingAppMauiVersion2.ViewModels
             {
                 if (name == user.UserName)
                 {
-                    userNameTaken.SetUserNameTaken(false);
+                    inputs.SetUserNameTaken(false);
                     UserNameOk = false;
                     return string.Empty;
                 }
             }
-            userNameTaken.SetUserNameTaken(true);
+            inputs.SetUserNameTaken(true);
             UserNameOk = true;
             return name;
         }
@@ -104,14 +96,14 @@ namespace TrainingAppMauiVersion2.ViewModels
             var w = HelperMethods.TryParseToDouble(Weight.Replace('.', ','));
             if (w == 0)
             {
-                wrongInput.SetIncorrectWeight(false);
-                CorrectWeight = wrongInput.GetIncorrectWeight();
+                inputs.SetIncorrectWeight(false);
+                CorrectWeight = inputs.GetIncorrectWeight();
                 WeightOk = false;
             }
             else
             {
-                wrongInput.SetIncorrectWeight(true);
-                CorrectWeight = wrongInput.GetIncorrectWeight();
+                inputs.SetIncorrectWeight(true);
+                CorrectWeight = inputs.GetIncorrectWeight();
                 WeightOk = true;
             }
             return w;

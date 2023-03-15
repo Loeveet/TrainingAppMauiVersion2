@@ -59,7 +59,7 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         private int SetButtonOffSet()
         {
-            if (program.GetListOfSets().Count() != 0)
+            if (program.GetListOfSets().Count != 0)
             {
                 return 2;
             }

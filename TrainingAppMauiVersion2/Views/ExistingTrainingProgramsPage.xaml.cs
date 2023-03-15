@@ -44,12 +44,11 @@ public partial class ExistingTrainingProgramsPage : ContentPage
     private async void Delete(object sender, SelectedItemChangedEventArgs e)
     {
         var user = loggedInUser.GetLoggedInPerson();
-        var users = await Connections.Connection.UserCollection();
 
         if (((ListView)sender).SelectedItem is TrainingProgram trainingProgram)
         {
             user.Programs.Remove(trainingProgram);
-            await users.ReplaceOneAsync(x => x.Id == user.Id, user);            
+            Person.UpdateUser(user);
             await Navigation.PushAsync(new ExistingTrainingProgramsPage());
         }
 
