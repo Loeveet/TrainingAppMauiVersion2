@@ -80,7 +80,7 @@
 
             <Button
                 Text="Create program"
-                Clicked="AddProgramToUser"
+                Clicked="OnClickedAddProgramToUser"
                 WidthRequest="220"/>
             <Button
             Text="Log out"

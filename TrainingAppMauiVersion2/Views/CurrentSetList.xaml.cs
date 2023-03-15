@@ -2,13 +2,13 @@ using TrainingAppMauiVersion2.Models;
 using TrainingAppMauiVersion2.Singletons;
 using CommunityToolkit.Mvvm.Input;
 using MongoDB.Driver;
-
-
+using TrainingAppMauiVersion2.Facade;
 
 namespace TrainingAppMauiVersion2.Views;
 
 public partial class CurrentSetList : ContentPage
 {
+    ISaveProgramFacade _saveProgramFacade = new SaveProgramFacade();
     NewTrainingProgram newTrainingProgram = NewTrainingProgram.GetInstansOfListOfSets();
     ChosenExercise chosenExercise = ChosenExercise.GetInstansOfChosenExercise();
     LoggedInPerson loggedInUser = LoggedInPerson.GetInstansOfLoggedInPerson();
@@ -42,8 +42,13 @@ public partial class CurrentSetList : ContentPage
         await Navigation.PopToRootAsync();
     }
 
-    private async void AddProgramToUser(object sender, EventArgs e)
+    private async void OnClickedAddProgramToUser(object sender, EventArgs e)
     {
+        if (_saveProgramFacade.SaveProgram(NewProgramName.Text, user))
+        {
+
+        }
+
         var users = await Connections.Connection.UserCollection();
 
         TrainingProgram trainingProgram = new TrainingProgram()
@@ -53,7 +58,7 @@ public partial class CurrentSetList : ContentPage
             Exercises = newTrainingProgram.GetListOfSets()
         };
         user.Programs.Add(trainingProgram);
-        await users.ReplaceOneAsync(x => x.Id == user.Id, loggedInUser.GetLoggedInPerson());
+        await users.ReplaceOneAsync(x => x.Id == user.Id, user);
         await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
         await Navigation.PushAsync(new ExistingTrainingProgramsPage());
     }
