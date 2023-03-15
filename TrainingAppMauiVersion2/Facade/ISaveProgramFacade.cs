@@ -8,6 +8,6 @@ namespace TrainingAppMauiVersion2.Facade
 {
     internal interface ISaveProgramFacade
     {
-        bool SaveProgram(string programName, Models.Person user);
+        bool CanSaveProgram(string programName, Models.Person user);
     }
 }

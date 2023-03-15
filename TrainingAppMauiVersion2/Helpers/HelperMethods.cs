@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingAppMauiVersion2.Singletons;
+using MongoDB.Driver;
 
 namespace TrainingAppMauiVersion2.NewFolder
 {
@@ -46,5 +47,6 @@ namespace TrainingAppMauiVersion2.NewFolder
             }
             return id;
         }
+
     }
 }

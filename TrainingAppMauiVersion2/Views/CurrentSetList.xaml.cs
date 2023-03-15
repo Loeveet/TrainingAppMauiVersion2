@@ -44,22 +44,14 @@ public partial class CurrentSetList : ContentPage
 
     private async void OnClickedAddProgramToUser(object sender, EventArgs e)
     {
-        if (_saveProgramFacade.SaveProgram(NewProgramName.Text, user))
+        if (_saveProgramFacade.CanSaveProgram(NewProgramName.Text, user)) // Facade igen, nu för att spara program på den inloggade
         {
-
+            await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
+            await Navigation.PushAsync(new ExistingTrainingProgramsPage());
         }
-
-        var users = await Connections.Connection.UserCollection();
-
-        TrainingProgram trainingProgram = new TrainingProgram()
+        else
         {
-            Id = Guid.NewGuid(),
-            Name = NewProgramName.Text,
-            Exercises = newTrainingProgram.GetListOfSets()
-        };
-        user.Programs.Add(trainingProgram);
-        await users.ReplaceOneAsync(x => x.Id == user.Id, user);
-        await App.Current.MainPage.DisplayAlert("Success", "Program added to user", "Continue");
-        await Navigation.PushAsync(new ExistingTrainingProgramsPage());
+            await App.Current.MainPage.DisplayAlert("Error", "Program couldn't be saved", "Try again");
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace TrainingAppMauiVersion2.Facade.Components
 {
     internal interface ITrySaveProgram
     {
+        bool IsSaved(string programName, Models.Person user);
     }
 }
