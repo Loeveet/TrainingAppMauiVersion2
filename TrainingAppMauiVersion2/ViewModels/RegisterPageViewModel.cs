@@ -91,7 +91,12 @@ namespace TrainingAppMauiVersion2.ViewModels
             return name;
         }
 
-        private double CheckWeight()
+        /*
+         Det som small under redovisningen var att jag missat att ta höjd för om man trycker på registera
+         utan att fylla i något i fälten. Nu smäller inte programmet om det blir så, men felmeddelandet man
+         får i appen kanske inte blir helt korrekt.
+         */
+        private double CheckWeight() 
         {
             if (Weight == null)
             {
