@@ -93,6 +93,13 @@ namespace TrainingAppMauiVersion2.ViewModels
 
         private double CheckWeight()
         {
+            if (Weight == null)
+            {
+                inputs.SetIncorrectWeight(false);
+                CorrectWeight = inputs.GetIncorrectWeight();
+                WeightOk = false;
+                return 0;
+            }
             var w = HelperMethods.TryParseToDouble(Weight.Replace('.', ','));
             if (w == 0)
             {
